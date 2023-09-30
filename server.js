@@ -1,4 +1,11 @@
 const express = require("express");
+
+//connect to database and initialize
+const { connectToDatabase } = require('./database');
+connectToDatabase();
+
+
+
 const app = express();
 
 app.get("/api", (req, res) => {
