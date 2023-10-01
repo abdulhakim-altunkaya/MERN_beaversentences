@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function Test() {
+function SaveDataComponent() {
     const [inputData, setInputData] = useState('');
 
     const sendDataToServer = async () => {
         try {
             const response = await axios.post('/api', { content: inputData });
             console.log(response.data);
+            setInputData(''); // Clear the input after successful save
         } catch (error) {
             console.error('There was an error sending data', error);
         }
@@ -19,10 +20,11 @@ function Test() {
                 type="text" 
                 value={inputData}
                 onChange={(e) => setInputData(e.target.value)}
+                placeholder="Enter data..."
             />
-            <button onClick={sendDataToServer}>Submit</button>
+            <button onClick={sendDataToServer}>Save to MongoDB</button>
         </div>
     );
 }
 
-export default Test;
+export default SaveDataComponent;

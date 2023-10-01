@@ -1,19 +1,17 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Test from "./components/Test";
+import SaveDataComponent from "./components/SaveDataComponent";
 
 function App() {
-  return (
-    <div className="App">
-      
-      <Router>
-        <Routes>
-          <Route path="/api" element={ <Test />} />
-        </Routes>
-      </Router>
-
-
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router>
+                <Routes>
+                    <Route path="/" element={ <SaveDataComponent /> } />
+                </Routes>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
