@@ -34,3 +34,22 @@ app.post('/api', async (req, res) => {
 const server = app.listen(process.env.PORT || 5000);
 const portNumber = server.address().port;
 console.log(`Server is running on port ${portNumber}`);
+
+
+const mongoose = require('mongoose');
+
+const connectDB = async () => {
+    try {
+        await mongoose.connect('mongodb+srv://altunkaya2:190824@cluster0.nolqla7.mongodb.net/?retryWrites=true&w=majority', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true
+        });
+        console.log('MongoDB connected...');
+    } catch (err) {
+        console.error('Error connecting to MongoDB', err.message);
+        process.exit(1);
+    }
+};
+
+module.exports = connectDB;
