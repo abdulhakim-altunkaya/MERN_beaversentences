@@ -22,6 +22,16 @@ app.post('/api', async (req, res) => {
     }
 });
 
+app.get('/readdata', async (req, res) => {
+    try {
+        const allData = await DataModel.find(); // Fetch all data from your MongoDB collection
+        res.json(allData);
+    } catch (err) {
+        console.error('Error fetching data:', err);
+        res.status(500).send('Server error');
+    }
+});
+
 const server = app.listen(process.env.PORT || 5000);
 const portNumber = server.address().port;
 console.log(`Server is running on port ${portNumber}`);
