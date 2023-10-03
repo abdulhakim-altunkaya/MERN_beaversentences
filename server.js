@@ -7,6 +7,16 @@ const connectDB = require("./Database");
 const app = express();
 connectDB();
 
+if (process.env.NODE_ENV === "production") {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, "client/build")));
+
+    // Handle React routing, return all requests to React app
+    app.get("*", function(req, res) {
+        res.sendFile(path.join(__dirname, "client/build", "index.html"));
+    });
+}
+
 // Middleware to parse POST body data
 app.use(express.json({ extended: false }));
 
@@ -31,6 +41,8 @@ app.get('/readdata', async (req, res) => {
         res.status(500).send('Server error');
     }
 });
+
+
 
 const server = app.listen(process.env.PORT || 5000);
 const portNumber = server.address().port;
