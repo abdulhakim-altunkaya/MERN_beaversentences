@@ -6,7 +6,10 @@ function Read() {
 
     const fetchDataFromServer = async () => {
         try {
-            const response = await axios.get('/readdata');
+            const response = await axios.get('/.netlify/functions/readdata');
+
+           
+
             setServerResponse(response.data);
         } catch (error) {
             console.error('There was an error fetching data', error.message);

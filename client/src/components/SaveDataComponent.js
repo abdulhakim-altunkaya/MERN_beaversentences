@@ -6,7 +6,7 @@ function SaveDataComponent() {
 
     const sendDataToServer = async () => {
         try {
-            const response = await axios.post('/api', { content: inputData });
+            const response = await axios.post('/.netlify/functions/api', { content: inputData });
             console.log(response.data);
             alert("Data saved to the MongoDB")
             setInputData(''); // Clear the input after successful save
