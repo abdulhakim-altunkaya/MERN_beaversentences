@@ -46,4 +46,4 @@ app.get('/readdata', async (req, res) => {
 
 const server = app.listen(process.env.PORT || 5000);
 const portNumber = server.address().port;
-console.log(`Server is running on port ${portNumber}`);
+console.log(`Server is running on PORT ${portNumber}`);
