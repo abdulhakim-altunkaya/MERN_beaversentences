@@ -23,7 +23,7 @@ function Read() {
                 {serverResponse ? (
                     <pre>{JSON.stringify(serverResponse, null, 2)}</pre>
                 ) : (
-                    <p>No response fetched</p>
+                    <p>No response fetched dude</p>
                 )}
             </div>
         </div>
