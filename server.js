@@ -25,7 +25,7 @@ app.post('/api', async (req, res) => {
         const { content } = req.body;
         const newData = new DataModel({ content });
         await newData.save();
-        res.json({ message: 'Data saved successfully!' });
+        res.json({ message: 'Data saved very successfully!' });
     } catch (err) {
         console.error('Error saving data:', err);
         res.status(500).send('Server error');
