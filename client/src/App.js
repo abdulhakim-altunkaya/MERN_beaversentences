@@ -1,18 +1,29 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import SaveDataComponent from "./components/SaveDataComponent";
-import Read from "./components/Read";
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import Test from './components/Test';
+import Home from './components/Home';
 
 function App() {
     return (
-        <div className="App">
-            <Router>
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/test">Test</Link>
+                        </li>
+                    </ul>
+                </nav>
+                
                 <Routes>
-                    <Route path="/" element={ <SaveDataComponent /> } />
-                    <Route path="/read" element={ <Read /> } />
+                    <Route path="/test" element={ <Test /> } />
+                    <Route path="/" element={ <Home /> } />
                 </Routes>
-            </Router>
-        </div>
+            </div>
+        </Router>
     );
 }
 
