@@ -1,4 +1,4 @@
-[build]
-  functions = "netlify-functions"
-  command = "npm run build --prefix client"
-  publish = "client/build"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
