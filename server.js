@@ -14,7 +14,7 @@ app.use(express.json({ extended: false }));
 
 
 // API route
-app.get('/api', (req, res) => {
+app.get('/anypath', (req, res) => {
     res.json({ message: "Hello from the server!" });
 });
 

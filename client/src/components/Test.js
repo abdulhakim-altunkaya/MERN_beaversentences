@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
 function Test() {
     const [data, setData] = useState(null);
-
     useEffect(() => {
-        fetch('/api')
+        fetch('/anypath')
         .then(res => {
             console.log(res);
             return res.json();
@@ -12,7 +10,6 @@ function Test() {
          .then(data => setData(data.message))
          .catch(err => console.error("Error fetching data: ", err.message));
     }, []);
-
     return (
         <div>
             <h2>Test Component</h2>
@@ -20,5 +17,4 @@ function Test() {
         </div>
     );
 }
-
 export default Test;
