@@ -6,7 +6,13 @@ const DataModel = require("./DataModel");
 const connectDB = require("./Database");
 connectDB();
 
+
 const app = express();
+
+//we need cors middleware here because frontend and backend run on different ports.
+const cors = require("cors");
+
+
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 // Middleware to parse POST body data. This is needed for "post" requests below
@@ -14,7 +20,7 @@ app.use(express.json({ extended: false }));
 
 
 // API route
-app.get('/anypath', (req, res) => {
+app.get('/readfromserver', (req, res) => {
     res.json({ message: "Hello from the server!" });
 });
 
@@ -23,7 +29,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-app.post("/write", async (req, res) => {
+app.post("/writetodatabase", async (req, res) => {
   try {
     const {content} = req.body;
     const newData = new DataModel({ content });

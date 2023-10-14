@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import Test from './components/Test';
-import Home from './components/Home';
+import Read from './components/Read';
+import Write from './components/Write';
 function App() {
     return (
         <Router>
@@ -9,17 +9,18 @@ function App() {
                 <nav>
                     <ul>
                         <li>
-                            <Link to="/">Home</Link>
+                            <Link to="/write">Write to Database</Link>
                         </li>
                         <li>
-                            <Link to="/test">Test</Link>
+                            <Link to="/read">Hello from Server</Link>
                         </li>
                     </ul>
                 </nav>
                 
                 <Routes>
-                    <Route path="/test" element={ <Test /> } />
-                    <Route path="/" element={ <Home /> } />
+                    <Route path="/read" element={ <Read /> } />
+                    <Route path="/write" element={ <Write /> } />
+                    <Route path="/" element={ <Write /> } />
                 </Routes>
             </div>
         </Router>

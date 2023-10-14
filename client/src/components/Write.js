@@ -4,7 +4,7 @@ function Write() {
     const [inputData, setInputData] = useState('');
     const sendDataToServer = async () => {
         try {
-            const response = await axios.post('/write', { content: inputData });
+            const response = await axios.post('/writetodatabase', { content: inputData });
             console.log(response.data);
             alert("Data saved to the MongoDB")
             setInputData(''); // Clear the input after successful save
@@ -24,4 +24,4 @@ function Write() {
         </div>
     );
 }
-export default Home;
+export default Write;

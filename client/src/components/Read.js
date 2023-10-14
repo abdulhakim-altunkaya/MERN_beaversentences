@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-function Test() {
+function Read() {
     const [data, setData] = useState(null);
     useEffect(() => {
-        fetch('/anypath')
+        fetch('http://localhost:5000/readfromserver')
         .then(res => {
             console.log(res);
             return res.json();
@@ -17,4 +17,4 @@ function Test() {
         </div>
     );
 }
-export default Test;
+export default Read;
