@@ -11,6 +11,7 @@ const app = express();
 
 //we need cors middleware here because frontend and backend run on different ports.
 const cors = require("cors");
+app.use(cors());
 
 
 // Serve static files from the React app
@@ -43,5 +44,5 @@ app.post("/writetodatabase", async (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port: ${PORT}`);
 });
