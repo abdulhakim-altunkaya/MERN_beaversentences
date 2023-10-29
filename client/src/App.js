@@ -2,10 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Read from './components/Read';
 import Write from './components/Write';
+import Dropdown from './components/Dropdown';
+
 function App() {
     return (
         <Router>
-            <div>
+            <div className='mainDiv'>
                 <nav>
                     <ul>
                         <li>
@@ -16,6 +18,7 @@ function App() {
                         </li>
                     </ul>
                 </nav>
+                <Dropdown />
                 
                 <Routes>
                     <Route path="/read" element={ <Read /> } />
