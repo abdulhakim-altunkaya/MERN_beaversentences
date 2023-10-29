@@ -14,7 +14,7 @@ function Write() {
     };
     
     return (
-        <div>
+        <div> 
             <input 
                 type="text" 
                 value={inputData}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 function Read() {
     const [data, setData] = useState(null);
     useEffect(() => {
@@ -18,3 +19,4 @@ function Read() {
     );
 }
 export default Read;
+ 
