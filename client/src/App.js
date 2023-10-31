@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Read from './components/Read';
 import Write from './components/Write';
+import WriteEngpor from './components/WriteEngpor';
 import Dropdown from './components/Dropdown';
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
                 <Routes>
                     <Route path="/read" element={ <Read /> } />
                     <Route path="/write" element={ <Write /> } />
-                    <Route path="/" element={ <Write /> } />
+                    <Route path="/sentence" element={ <WriteEngpor /> } />
+                    <Route path="/" element={ <WriteEngpor /> } />
                 </Routes>
             </div>
         </Router>

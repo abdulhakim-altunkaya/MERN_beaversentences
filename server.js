@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require("mongoose");
 
 const DataModel = require("./DataModel");
+const ModelEngpor = require("./ModelEngpor");
 const connectDB = require("./Database");
 connectDB();
 
@@ -34,6 +35,18 @@ app.post("/writetodatabase", async (req, res) => {
   try {
     const {content} = req.body;
     const newData = new DataModel({ content });
+    await newData.save();
+    res.json({message: "Data saved successfully / Данные сохранены"})
+  } catch (error) {
+    console.log("Ошибка сервера при сохранении данных", error.message);
+    res.status(500).send("Server error while saving data/Ошибка сервера при сохранении данных")
+  }
+})
+
+app.post("/engpor", async (req, res) => {
+  try {
+    const {SentenceEng, SentencePor} = req.body;
+    const newData = new ModelEngpor({SentenceEng, SentencePor});
     await newData.save();
     res.json({message: "Data saved successfully / Данные сохранены"})
   } catch (error) {
