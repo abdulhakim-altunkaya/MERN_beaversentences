@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import '../style/dropdown.css';
 
 function Dropdown() {
 
@@ -9,16 +10,23 @@ function Dropdown() {
     }
 
   return (
-    <div>
-        <select value={selected} onChange={handleSelect}>
+      <div class= "selectMainDiv">
+
+        <div class="selectChildDiv">
+          <select value={selected} onChange={handleSelect}>
             <option value='' disabled>Select Language</option>
             <option value='English-Turkish'>English-Turkish</option>
             <option value='Turkish-English'>Turkish-English</option>
             <option value='English-Portuguese'>English-Portuguese</option>
             <option value='Portuguese-English'>Portuguese-English</option>
-        </select>
-        <p>{selected}</p>
-    </div>
+          </select>
+        </div>
+
+        <div>
+          <p>{selected}</p>
+        </div>
+        
+      </div> 
   )
 
 }
