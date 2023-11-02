@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Read from './components/Read';
 import Write from './components/Write';
 import WriteEngpor from './components/WriteEngpor';
-import Dropdown from './components/Dropdown';
+import MainContent from "./components/MainContent";
 
 function App() {
     return (
@@ -19,7 +19,7 @@ function App() {
                         </li>
                     </ul>
                 </nav>
-                <Dropdown />
+                <MainContent />
                 
                 <Routes>
                     <Route path="/read" element={ <Read /> } />

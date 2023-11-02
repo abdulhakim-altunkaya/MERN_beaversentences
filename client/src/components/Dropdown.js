@@ -13,7 +13,7 @@ function Dropdown() {
       <div class= "selectMainDiv">
 
         <div class="selectChildDiv">
-          <select value={selected} onChange={handleSelect}>
+          <select className='selectArea' value={selected} onChange={handleSelect}>
             <option value='' disabled>Select Language</option>
             <option value='English-Turkish'>English-Turkish</option>
             <option value='Turkish-English'>Turkish-English</option>
