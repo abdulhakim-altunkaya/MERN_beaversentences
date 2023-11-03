@@ -1,35 +1,55 @@
-.selectMainDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-.selectChildDiv {
+.select-container {
+  width: 300px;
+  margin: auto;
+  user-select: none;
   position: relative;
+  z-index: 2;
+
 }
 
-.selectArea {
+.select-display {
   padding: 10px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  appearance: none;
-  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  background: white;
   cursor: pointer;
-  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.selectChildDiv:after {
-  content: '\25BC';
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  font-size: 25px; /* Increased font size */
+.innerMainSelectField {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.select-arrow {
   color: orange;
-  pointer-events: none;
+}
+
+.options-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 1000; /* High z-index to ensure it's above other content */
+}
+
+.option-each {
+  padding: 10px;
   cursor: pointer;
-  border-radius: 10px; /* Increased border-radius */
+  display: flex;
+  align-items: center;
+}
+
+.option-each:hover {
+  background-color: #f2f2f2;
+}
+
+.option-icon {
+  margin-right: 10px;
+  width: 20px; /* Adjust size as needed */
+  height: auto;
 }

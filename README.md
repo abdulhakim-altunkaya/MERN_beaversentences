@@ -29,4 +29,4 @@ For inquiries, suggestions, business and advertisement cooperation, please feel 
 ---
 
 Beaver Sentences - Enhancing Your Translation Experience
-<p>Coffee, at the City hall <a href="https://codepen.io/raubaca/pen/bGWmZje" target="_blank">here!</a></p>
+<a href="https://www.flaticon.com/free-icons/turkey" title="turkey icons">Flag icons created by Freepik - Flaticon</a>
