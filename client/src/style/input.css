@@ -9,10 +9,18 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding: 10px;
   width: 600px;
-  border: none;
-  border-radius: 7px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: solid gray 1px;
+  outline: none;
+  box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.1);
   font-size: 16px;
-  background-color: #f8f8f8;
+  background-color: #edeaea;
   box-sizing: border-box; /* Include padding in the width */
+}
+.searchButton {
+  margin-left: -40px;
+  font-size: 18px;
+  border: none;
+  background-color: none;
+  background: none;
+  cursor: pointer;
 }

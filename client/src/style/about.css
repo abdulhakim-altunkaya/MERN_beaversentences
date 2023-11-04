@@ -1,0 +1,62 @@
+/* About.css */
+.about {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: justify;
+  }
+  
+  .about h1, .about h2 {
+    color: #333;
+  }
+  
+  .about h1 {
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 0.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .about h2 {
+    color: #444;
+    margin-top: 2rem;
+  }
+  
+  .about ul {
+    list-style: inside;
+    padding-left: 0;
+    margin: 1rem 0;
+  }
+  
+  .about li {
+    margin: 0.5rem 0;
+  }
+  
+  .about p, .about footer {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  .about a {
+    color: #0067d8;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .about a:hover,
+  .about a:focus {
+    color: #0056b3;
+  }
+  
+  .about footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eaeaea;
+    text-align: center;
+  }
+  
+  /* Add additional styling based on your branding and design preferences */
+  

@@ -29,4 +29,6 @@ For inquiries, suggestions, business and advertisement cooperation, please feel 
 ---
 
 Beaver Sentences - Enhancing Your Translation Experience
-<a href="https://www.flaticon.com/free-icons/turkey" title="turkey icons">Flag icons created by Freepik - Flaticon</a>
+
+<a href="https://www.adobe.com/express/" title="logo">Logo created by Adobe Express</a>
+<a href="https://www.flaticon.com/free-icons/turkey" title="flags">Flag icons created by Freepik - Flaticon</a>

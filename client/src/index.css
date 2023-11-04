@@ -10,6 +10,20 @@ body{
 .mainDiv {
   width: 70vw;
   margin: auto;
-  background-color: lightgreen;
+  background-color: white;
+  min-height: 100vh;
 }
 
+.logoDiv {
+  margin-top: 0;
+  width: 500px;
+  padding-bottom: 25px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.logo-image {
+  width: 300px;
+  margin: auto;
+  cursor: pointer;
+}

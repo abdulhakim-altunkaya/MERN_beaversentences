@@ -1,0 +1,64 @@
+/* Navbar.css */
+.navbar {
+  color: black; /* Light text color for contrast */
+  height: 60px; /* Set a specific height for the navbar */
+  line-height: 60px; /* Align text vertically */
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0; /* Remove padding */
+}
+
+.nav-item {
+  margin: 0 20px; /* Spacing between menu items */
+  cursor: pointer
+}
+.nav-homepage {
+  text-decoration: none;
+  font-size: 16px; /* Font size */
+  padding: 10px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+}
+.nav-about {
+  text-decoration: none;
+  color:black; /* Light text color */
+  font-size: 16px; /* Font size */
+  padding: 10px;
+  border-radius: 3px; /* Rounded corners for the hover effect */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+  background-color: blanchedalmond;
+}
+
+.nav-about:hover,
+.nav-about:focus {
+  background-color: #c3c9ce; /* Slightly lighter gray/blue */
+  color: black; /* Maintain the text color to keep the size stable */
+}
+
+/* Responsive: Stacking the navbar for smaller screens if needed */
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .nav-item {
+    margin: 10px 0; /* Stack the links with space on top/bottom */
+  }
+
+  .navbar {
+    height: auto; /* Adjust height for vertical layout */
+    line-height: normal; /* Reset line height for stacked layout */
+  }
+
+  .nav-link {
+    text-align: center; /* Center align text for stacked layout */
+    padding: 10px 20px; /* Larger touch targets for mobile users */
+  }
+}

@@ -25,7 +25,7 @@ app.use(express.json({ extended: false }));
 app.get('/readfromserver', (req, res) => {
     res.json({ message: "Hello from the server!" });
 });
-
+ 
 // Handle any requests that don't match the above
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
