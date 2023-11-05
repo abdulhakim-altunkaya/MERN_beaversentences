@@ -55,20 +55,21 @@ app.post("/engpor", async (req, res) => {
   }
 });
 
-app.get('/engpor/search', async (req, res) => {
+app.get('/sentences/search', async (req, res) => {
   const { word } = req.query;
 
   try {
-    // Use MongoDB's $regex operator to perform a case-insensitive word search
-    const sentences = await Sentence.find({
-      sentenceText: { $regex: new RegExp(word, 'iu') },//i means insensitive search, and u means all unicode characters like ö, ü, ...
+    const sentences = await ModelEngpor.find({
+      SentenceEng: { $regex: new RegExp(word, 'i') },
     });
+
     res.json(sentences);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: 'Server error' });
   }
 });
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

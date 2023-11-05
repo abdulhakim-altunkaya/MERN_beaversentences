@@ -13,11 +13,12 @@ function TestInput() {
 
   return (
     <div>
-        <input type='string' 
+        <input type='text' 
         placeholder='enter value'
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}/>
         <button onClick={sendParams}>SEND INPUT VALUE TO PARAMS</button>
+        <span>{inputValue}</span>
     </div>
   )
 }

@@ -2,11 +2,11 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 function TestParams() {
-  const { inputValue } = useParams();
-  console.log(inputValue);
+  const { param } = useParams(); //param name is coming from server.js
+  console.log(param);
   return (
     <div>
-      {inputValue}
+      <span>{param}</span>
     </div>
   );
 }

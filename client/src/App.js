@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import About from "./components/About";
 import TestParams from "./components/TestParams";
 import TestInput from "./components/TestInput";
+import TestInput2 from "./components/TestInput2";
 
 function App() {
     return (
@@ -32,6 +33,9 @@ function App() {
                         <li>
                             <Link to="/test1">TEST INPUT</Link>
                         </li>
+                        <li>
+                            <Link to="/test2">TEST INPUT 2</Link>
+                        </li>
                     </ul>
                 </nav>
                 <Routes>
@@ -39,8 +43,9 @@ function App() {
                     <Route path="/write" element={ <Write /> } />
                     <Route path="/about" element={ <About /> } />
                     <Route path="/write1" element={ <WriteEngpor /> } />
-                    <Route path="/search/:param" element={ <TestParams /> } />
+                    <Route path="/search/:param" element={ <TestParams /> } /> 
                     <Route path="/test1" element={ <TestInput /> } />
+                    <Route path="/test2" element={ <TestInput2 /> } />
                     <Route path="/" element={ <WriteEngpor /> } />
                 </Routes>
             </div>
@@ -48,3 +53,4 @@ function App() {
     );
 }
 export default App;
+/*In route search, make sure component param var name is also "param"*/
