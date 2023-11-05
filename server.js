@@ -53,7 +53,22 @@ app.post("/engpor", async (req, res) => {
     console.log("Ошибка сервера при сохранении данных", error.message);
     res.status(500).send("Server error while saving data/Ошибка сервера при сохранении данных")
   }
-})
+});
+
+app.get('/engpor/search', async (req, res) => {
+  const { word } = req.query;
+
+  try {
+    // Use MongoDB's $regex operator to perform a case-insensitive word search
+    const sentences = await Sentence.find({
+      sentenceText: { $regex: new RegExp(word, 'iu') },//i means insensitive search, and u means all unicode characters like ö, ü, ...
+    });
+    res.json(sentences);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

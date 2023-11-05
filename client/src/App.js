@@ -6,6 +6,8 @@ import WriteEngpor from './components/WriteEngpor';
 import MainContent from "./components/MainContent";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
+import TestParams from "./components/TestParams";
+import TestInput from "./components/TestInput";
 
 function App() {
     return (
@@ -24,6 +26,12 @@ function App() {
                         <li>
                             <Link to="/write1">Write ENGPOR</Link>
                         </li>
+                        <li>
+                            <Link to="/search">TEST PARAMS</Link>
+                        </li>
+                        <li>
+                            <Link to="/test1">TEST INPUT</Link>
+                        </li>
                     </ul>
                 </nav>
                 <Routes>
@@ -31,6 +39,8 @@ function App() {
                     <Route path="/write" element={ <Write /> } />
                     <Route path="/about" element={ <About /> } />
                     <Route path="/write1" element={ <WriteEngpor /> } />
+                    <Route path="/search/:param" element={ <TestParams /> } />
+                    <Route path="/test1" element={ <TestInput /> } />
                     <Route path="/" element={ <WriteEngpor /> } />
                 </Routes>
             </div>
