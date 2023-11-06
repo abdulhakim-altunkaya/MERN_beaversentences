@@ -70,6 +70,59 @@ app.get('/sentences/search', async (req, res) => {
   }
 });
 
+app.get('/test3/search', (req, res) => {
+  const { searchTerm } = req.query; // Access the query parameter
+  console.log(searchTerm);
+  try {
+    res.status(200).json({ myMessage: `word processed: ${searchTerm}121231231231` });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: 'server.js try catch error' });
+  }
+});
+
+
+// GET route with route parameter (useParams)
+app.get('/api/param-route/:id', (req, res) => {
+  const { id } = req.params;
+  console.log('Received route parameter:', id);
+
+  try {
+    res.status(200).json({ myMessage: `Received route parameter: ${id}` });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// GET route with query parameter
+app.get('/api/query-route', (req, res) => {
+  const { param } = req.query;
+  console.log('Received query parameter:', param);
+
+  try {
+    res.status(200).json({ myMessage: `Received query parameter: ${param}` });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// POST route with route parameter and request body
+app.post('/api/body-route/:id', (req, res) => {
+  const { id } = req.params;
+  const { inputField } = req.body;
+  console.log('Received route parameter:', id);
+  console.log('Received input field in request body:', inputField);
+
+  try {
+    res.status(200).json({ myMessage: `Received route parameter: ${id}, input field: ${inputField}` });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
