@@ -11,6 +11,7 @@ import TestInput from "./components/TestInput";
 import TestInput2 from "./components/TestInput2";
 import TestInput3 from "./components/TestInput3";
 import TestInput4 from "./components/TestInput4";
+import TestInput5 from "./components/TestInput5";
 
 function App() {
     return (
@@ -44,6 +45,9 @@ function App() {
                         <li>
                             <Link to="/test4">TEST INPUT 4</Link>
                         </li>
+                        <li>
+                            <Link to="/test5">TEST INPUT 5</Link>
+                        </li>
                     </ul>
                 </nav>
                 <Routes>
@@ -56,6 +60,7 @@ function App() {
                     <Route path="/test2" element={ <TestInput2 /> } />
                     <Route path="/test3" element={ <TestInput3 /> } />
                     <Route path="/test4" element={ <TestInput4 /> } />
+                    <Route path="/test5" element={ <TestInput5 /> } />
                     <Route path="/" element={ <WriteEngpor /> } />
                 </Routes>
             </div>

@@ -20,7 +20,7 @@ function TestInput4() {
       } else {
         console.error('Error in GET request with route parameter');
       }
-    } catch (error) {
+    } catch (error) { 
       console.error('Error:', error);
     }
   };

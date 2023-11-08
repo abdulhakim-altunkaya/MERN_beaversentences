@@ -123,6 +123,18 @@ app.post('/api/body-route/:id', (req, res) => {
   }
 });
 
+app.post("/api/goodquery", (req, res) => {
+  try {
+    let searchword = req.query.myinputfrontend;
+    console.log(searchword);
+    res.json({ myReplyfromServer: `Received query data: ${searchword} ` });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
