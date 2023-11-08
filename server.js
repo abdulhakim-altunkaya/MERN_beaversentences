@@ -123,10 +123,15 @@ app.post('/api/body-route/:id', (req, res) => {
   }
 });
 
-app.post("/api/goodquery", (req, res) => {
+app.post("/api/goodquery", async (req, res) => {
   try {
     let searchword = req.query.myinputfrontend;
     console.log(searchword);
+    const sentences = await ModelEngpor.find({
+      SentenceEng: { $regex: new RegExp(searchword, 'i') },
+    });
+    console.log(sentences)
+    
     res.json({ myReplyfromServer: `Received query data: ${searchword} ` });
   } catch (error) {
     console.log(error.message);
