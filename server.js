@@ -128,11 +128,14 @@ app.post("/api/goodquery", async (req, res) => {
     let searchword = req.query.myinputfrontend;
     console.log(searchword);
     const sentences = await ModelEngpor.find({
-      SentenceEng: { $regex: new RegExp(searchword, 'i') },
+      SentenceEng: { $regex: new RegExp(searchword, 'iu') },
     });
     console.log(sentences)
     
-    res.json({ myReplyfromServer: `Received query data: ${searchword} ` });
+    res.json({ 
+      myReplyfromServer: `Received query data: ${searchword} `,
+      myArrayfromServer: sentences
+    });
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ error: 'Server error' });
