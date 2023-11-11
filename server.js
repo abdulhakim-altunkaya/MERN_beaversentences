@@ -145,6 +145,9 @@ app.post("/api/goodquery", async (req, res) => {
 app.post("/api/query", async (req, res) => {
   try {
     let searchword = req.query.search;
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "your search word is too short" });
+    }
     const sentences = await ModelEngpor.find({
       SentenceEng: { $regex: new RegExp(searchword, "iu")},
     });
