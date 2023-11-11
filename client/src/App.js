@@ -12,6 +12,7 @@ import TestInput2 from "./components/TestInput2";
 import TestInput3 from "./components/TestInput3";
 import TestInput4 from "./components/TestInput4";
 import TestInput5 from "./components/TestInput5";
+import TestParams2 from "./components/TestParams2";
 
 function App() {
     return (
@@ -61,6 +62,7 @@ function App() {
                     <Route path="/test3" element={ <TestInput3 /> } />
                     <Route path="/test4" element={ <TestInput4 /> } />
                     <Route path="/test5" element={ <TestInput5 /> } />
+                    <Route path="/results/:param" element={ <TestParams2 /> } /> 
                     <Route path="/" element={ <WriteEngpor /> } />
                 </Routes>
             </div>

@@ -132,7 +132,7 @@ app.post("/api/goodquery", async (req, res) => {
     });
     console.log(sentences)
     
-    res.json({ 
+    res.status(200).json({ 
       myReplyfromServer: `Received query data: ${searchword} `,
       myArrayfromServer: sentences
     });
@@ -141,6 +141,22 @@ app.post("/api/goodquery", async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
+
+app.post("/api/query", async (req, res) => {
+  try {
+    let searchword = req.query.search;
+    const sentences = await ModelEngpor.find({
+      SentenceEng: { $regex: new RegExp(searchword, "iu")},
+    });
+    res.status(200).json({
+      serverMessage: "You successfully searched",
+      serverResults: sentences 
+    });
+  } catch (error) {
+    console.log("Server error: ", error.message);
+    res.status(500).json({ error: "server error" });
+  }
+})
 
 
 
