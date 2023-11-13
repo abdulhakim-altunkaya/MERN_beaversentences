@@ -8,7 +8,7 @@ function WriteEngpor() {
         try {
             const response = await axios.post('http://localhost:5000/engpor', { SentenceEng: sentenceEng, SentencePor: sentencePor});
             console.log(response.data);
-            alert("Data saved to the MongoDB")
+            alert("Data saved to the MongoDB");
             setSentenceEng('');
             setSentencePor('');
         } catch (error) {

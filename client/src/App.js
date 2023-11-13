@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Read from './components/Read';
 import Write from './components/Write';
 import WriteEngpor from './components/WriteEngpor';
+import WriteEngtur from './components/WriteEngtur';
 import MainContent from "./components/MainContent";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
@@ -13,6 +14,7 @@ import TestInput3 from "./components/TestInput3";
 import TestInput4 from "./components/TestInput4";
 import TestInput5 from "./components/TestInput5";
 import TestParams2 from "./components/TestParams2";
+
 
 function App() {
     return (
@@ -30,6 +32,9 @@ function App() {
                         </li>
                         <li>
                             <Link to="/write1">Write ENGPOR</Link>
+                        </li>
+                        <li>
+                            <Link to="/write2">Write ENGTUR</Link>
                         </li>
                         <li>
                             <Link to="/search">TEST PARAMS</Link>
@@ -57,6 +62,7 @@ function App() {
                     <Route path="/write" element={ <Write /> } />
                     <Route path="/about" element={ <About /> } />
                     <Route path="/write1" element={ <WriteEngpor /> } />
+                    <Route path="/write2" element={ <WriteEngtur /> } />
                     <Route path="/search/:param" element={ <TestParams /> } /> 
                     <Route path="/test1" element={ <TestInput /> } />
                     <Route path="/test2" element={ <TestInput2 /> } />

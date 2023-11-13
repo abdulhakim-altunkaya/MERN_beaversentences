@@ -3,7 +3,8 @@ const path = require('path');
 const mongoose = require("mongoose");
 
 const DataModel = require("./DataModel");
-const ModelEngpor = require("./ModelEngpor");
+const ModelEngpor = require("./Models/ModelEngpor");
+const ModelEngtur = require("./Models/ModelEngtur");
 const connectDB = require("./Database");
 connectDB();
 
@@ -55,6 +56,18 @@ app.post("/engpor", async (req, res) => {
   }
 });
 
+app.post("/engtur", async (req, res) => {
+  try {
+    const {SentenceEng, SentenceTur} = req.body;
+    const newData = new ModelEngtur({SentenceEng, SentenceTur});
+    await newData.save();
+    res.status(200).json({message: "Greetings from Server: Data saved successfully"})
+  } catch (error) {
+    console.log("server side error", error.message);
+    res.status(500).json({message: `an error happened on server side: ${error.message}`});
+  }
+})
+
 app.get('/sentences/search', async (req, res) => {
   const { word } = req.query;
 
@@ -95,33 +108,6 @@ app.get('/api/param-route/:id', (req, res) => {
   }
 });
 
-// GET route with query parameter
-app.get('/api/query-route', (req, res) => {
-  const { param } = req.query;
-  console.log('Received query parameter:', param);
-
-  try {
-    res.status(200).json({ myMessage: `Received query parameter: ${param}` });
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
-// POST route with route parameter and request body
-app.post('/api/body-route/:id', (req, res) => {
-  const { id } = req.params;
-  const { inputField } = req.body;
-  console.log('Received route parameter:', id);
-  console.log('Received input field in request body:', inputField);
-
-  try {
-    res.status(200).json({ myMessage: `Received route parameter: ${id}, input field: ${inputField}` });
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).json({ error: 'Server error' });
-  }
-});
 
 app.post("/api/goodquery", async (req, res) => {
   try {
