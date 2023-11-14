@@ -13,6 +13,7 @@ import TestInput2 from "./components/TestInput2";
 import TestInput3 from "./components/TestInput3";
 import TestInput4 from "./components/TestInput4";
 import TestInput5 from "./components/TestInput5";
+import TestInput6A from "./components/TestInput6A";
 import TestParams2 from "./components/TestParams2";
 
 
@@ -54,6 +55,9 @@ function App() {
                         <li>
                             <Link to="/test5">TEST INPUT 5</Link>
                         </li>
+                        <li>
+                            <Link to="/test6">TEST INPUT 6</Link>
+                        </li>
 
                     </ul>
                 </nav>
@@ -69,6 +73,7 @@ function App() {
                     <Route path="/test3" element={ <TestInput3 /> } />
                     <Route path="/test4" element={ <TestInput4 /> } />
                     <Route path="/test5" element={ <TestInput5 /> } />
+                    <Route path="/test6" element={ <TestInput6A /> } />
                     <Route path="/results/:param" element={ <TestParams2 /> } /> 
                     <Route path="/" element={ <WriteEngpor /> } />
                 </Routes>
