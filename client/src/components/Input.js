@@ -10,7 +10,7 @@ function Input() {
   const pairId = useSelector( (state) => state.pair)
 
   const navigate = useNavigate();
-  let [searchStatus, setSearchStatus] = useState(false);
+  let [searchSymbol, setSearchSymbol] = useState(false);
   let [inputValue, setInputValue] = useState("")
   
   //function to trigger handleSearch if "enter" key is pressed. Only for convenience.
@@ -25,13 +25,22 @@ function Input() {
       alert("You need to select a language pair");
       return;
     }
-    if(inputValue.length < 4) {
+    if(inputValue == "") {
+      alert("Please enter a word");
+      return;
+    } else if(inputValue.length < 4) {
       alert("Your word is too short, please enter a longer word");
       return;
+    }  else if(inputValue.length > 30) {
+      alert("Your word is too long");
+      return;
     }
-    setSearchStatus(true); 
-    navigate(`/results/${inputValue}`)
-    setSearchStatus(false);
+    setSearchSymbol(true); 
+    navigate(`/results/${inputValue}`);
+    setTimeout(() => {
+      
+    }, 0);
+    setSearchSymbol(false);
   }
 
   return (
@@ -44,7 +53,7 @@ function Input() {
         onChange={e => setInputValue(e.target.value)} 
         onKeyUp={handleKeyPress} />
         <button className="searchButton" onClick={handleSearch}>
-          {searchStatus ? 
+          {searchSymbol ? 
             "⏳"
           : 
             "🔍"

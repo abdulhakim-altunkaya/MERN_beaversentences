@@ -132,47 +132,57 @@ app.post("/api/query", async (req, res) => {
   try {
     let searchword = req.query.search;
     let languagePair = req.query.pair;
+    let resultsArray = [];
 
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "your search word is too short" });
     }
-
-    /*
-
+    
     if (languagePair == 1) {
-      const sentences = await ModelEngtur.find({
+      const sentences1 = await ModelEngtur.find({
         SentenceEng: { $regex: new RegExp(searchword, "iu")},
       });
+      resultsArray = sentences1;
     } else if(languagePair == 2 ) {
-      const sentences = await ModelEngtur.find({
+      const sentences1 = await ModelEngtur.find({
         SentenceEng: { $regex: new RegExp(searchword, "iu")},
       });
+      resultsArray = sentences1;
     } else if(languagePair == 3 ) {
-      const sentences = await ModelEngpor.find({
+      const sentences1 = await ModelEngpor.find({
         SentenceEng: { $regex: new RegExp(searchword, "iu")},
       });
+      resultsArray = sentences1;
     } else if(languagePair == 4 ) {
-      const sentences = await ModelEngpor.find({
+      const sentences1 = await ModelEngpor.find({
         SentenceEng: { $regex: new RegExp(searchword, "iu")},
       });
+      resultsArray = sentences1;
+    } else {
+      res.status(500).json({ error: "Server: language pair not detected. Please refresh page and choose langauge pair" });
+    }
+    console.log(resultsArray);
+    
+    if (languagePair == 1) {
+      console.log("hey 1")
+    } else if(languagePair == 2 ) {
+      console.log("hey 2")
+    } else if(languagePair == 3 ) {
+      console.log("hey 3")
+    } else if(languagePair == 4 ) {
+      console.log("hey 4")
     } else {
       res.status(500).json({ error: "Server: language pair not detected. Please refresh page and choose langauge pair" });
     }
 
-    */
-    /*
-    const sentences2 = await targetModel.find({
-      targetCollection: { $regex: new RegExp(searchword, "iu")},
-    });
-    console.log(sentences2);
-    */
+    
     const sentences = await ModelEngpor.find({
       SentenceEng: { $regex: new RegExp(searchword, "iu")},
     });
-
+    
     res.status(200).json({
       serverMessage: "You successfully searched",
-      serverResults: sentences 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log("Server error: ", error.message);
