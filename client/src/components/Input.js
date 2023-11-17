@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 import {useNavigate} from "react-router-dom";
-
-
 import '../style/input.css';
-
+//We will prevent users to make search if language pair is not selected.
+//Pair number wil be fetched from redux storage
+import { useSelector } from "react-redux";
 
 function Input() {
+  //fetching pair number from redux storage
+  const pairId = useSelector( (state) => state.pair)
+
   const navigate = useNavigate();
   let [searchStatus, setSearchStatus] = useState(false);
   let [inputValue, setInputValue] = useState("")
@@ -18,11 +21,15 @@ function Input() {
   }
 
   const handleSearch = () => {
-    if (inputValue.length < 4) {
+    if(pairId < 1 || pairId > 4) {
+      alert("You need to select a language pair");
+      return;
+    }
+    if(inputValue.length < 4) {
       alert("Your word is too short, please enter a longer word");
       return;
     }
-    setSearchStatus(true);
+    setSearchStatus(true); 
     navigate(`/results/${inputValue}`)
     setSearchStatus(false);
   }

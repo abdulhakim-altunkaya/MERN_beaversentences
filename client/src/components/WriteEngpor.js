@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useSelector } from "react-redux";
+
 function WriteEngpor() {
     const [sentenceEng, setSentenceEng] = useState('');
     const [sentencePor, setSentencePor] = useState('');
+
+    let pairId = useSelector( (state) => state.pair)
+    let [reduxValue, setReduxValue] = useState("");
 
     const sendDataToServer = async () => {
         try {
@@ -31,6 +36,7 @@ function WriteEngpor() {
                 placeholder="Enter Portuguese sentence..."
             />
             <button onClick={sendDataToServer}>Save to MongoDB</button>
+            <p>{pairId}</p>
         </div>
     );
 }

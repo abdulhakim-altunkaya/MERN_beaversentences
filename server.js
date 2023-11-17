@@ -103,7 +103,7 @@ app.get('/api/param-route/:id', (req, res) => {
   try {
     res.status(200).json({ myMessage: `Received route parameter: ${id}` });
   } catch (error) {
-    console.error(error.message);
+    console.error(error.message); 
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -116,7 +116,7 @@ app.post("/api/goodquery", async (req, res) => {
     const sentences = await ModelEngpor.find({
       SentenceEng: { $regex: new RegExp(searchword, 'iu') },
     });
-    console.log(sentences)
+    console.log(sentences);
     
     res.status(200).json({ 
       myReplyfromServer: `Received query data: ${searchword} `,
@@ -131,12 +131,45 @@ app.post("/api/goodquery", async (req, res) => {
 app.post("/api/query", async (req, res) => {
   try {
     let searchword = req.query.search;
+    let languagePair = req.query.pair;
+
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "your search word is too short" });
     }
+
+    /*
+
+    if (languagePair == 1) {
+      const sentences = await ModelEngtur.find({
+        SentenceEng: { $regex: new RegExp(searchword, "iu")},
+      });
+    } else if(languagePair == 2 ) {
+      const sentences = await ModelEngtur.find({
+        SentenceEng: { $regex: new RegExp(searchword, "iu")},
+      });
+    } else if(languagePair == 3 ) {
+      const sentences = await ModelEngpor.find({
+        SentenceEng: { $regex: new RegExp(searchword, "iu")},
+      });
+    } else if(languagePair == 4 ) {
+      const sentences = await ModelEngpor.find({
+        SentenceEng: { $regex: new RegExp(searchword, "iu")},
+      });
+    } else {
+      res.status(500).json({ error: "Server: language pair not detected. Please refresh page and choose langauge pair" });
+    }
+
+    */
+    /*
+    const sentences2 = await targetModel.find({
+      targetCollection: { $regex: new RegExp(searchword, "iu")},
+    });
+    console.log(sentences2);
+    */
     const sentences = await ModelEngpor.find({
       SentenceEng: { $regex: new RegExp(searchword, "iu")},
     });
+
     res.status(200).json({
       serverMessage: "You successfully searched",
       serverResults: sentences 
@@ -147,9 +180,12 @@ app.post("/api/query", async (req, res) => {
   }
 })
 
-
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
 });
+
+
+//check if targetCollection will work as a string value
+//check if you need to change the places of sentences on frontend. I mean target language sentences should be on the first column
+

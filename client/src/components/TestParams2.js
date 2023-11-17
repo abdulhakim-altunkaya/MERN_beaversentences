@@ -2,10 +2,17 @@ import React, {useEffect, useState, useRef} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import Mark from "mark.js";
+import { useSelector } from "react-redux";
 
 function TestParams2() {
+  //we are getting pairId to tell backend which language pair to conduct search.
+  //PairId is coming from redux storage. Redux storage gets it from dropdown menu through input component search function.
+  const pairId = useSelector( (state) => state.pair)
 
-  const { param } = useParams(); //param name is coming from server.js
+  //param name is coming from App.js. We will use it 1) as query data 2) as a security check on length of target word
+  //This component will be displayed with useParams. However we will make our search by using req.query
+  const { param } = useParams(); 
+
   let [serverResponse, setServerResponse] = useState("");
   let [serverArray, setServerArray] = useState([]);
 
@@ -17,7 +24,7 @@ function TestParams2() {
         alert("your word is too short, search a longer word");
         return;
       }
-      const url = `http://localhost:5000/api/query?search=${param}`;
+      const url = `http://localhost:5000/api/query?search=${param}&pair=${pairId}`;
       const response = await axios.post(url);
       const serverData = await response.data;
       setServerArray(serverData.serverResults);
