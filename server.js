@@ -198,4 +198,6 @@ app.listen(PORT, () => {
 
 //check if targetCollection will work as a string value
 //check if you need to change the places of sentences on frontend. I mean target language sentences should be on the first column
+//different language pairs, different result components. This might solve pair stucking and also dynamic rendering of left side of
+//the webpage with target language
 

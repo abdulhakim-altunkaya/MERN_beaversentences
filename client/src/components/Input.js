@@ -37,9 +37,7 @@ function Input() {
     }
     setSearchSymbol(true); 
     navigate(`/results/${inputValue}`);
-    setTimeout(() => {
-      
-    }, 0);
+
     setSearchSymbol(false);
   }
 

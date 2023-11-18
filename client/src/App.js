@@ -75,6 +75,7 @@ function App() {
                     <Route path="/test5" element={ <TestInput5 /> } />
                     <Route path="/test6" element={ <TestInput6A /> } />
                     <Route path="/results/:param" element={ <TestParams2 /> } /> 
+                    <Route path="/results/engtur/:param" element={ <TestParams2 /> } /> 
                     <Route path="/" element={ <WriteEngpor /> } />
                 </Routes>
             </div>
