@@ -21,10 +21,11 @@ function Input() {
   }
 
   const handleSearch = () => {
+    //input checks
     if(pairId < 1 || pairId > 4) {
       alert("You need to select a language pair");
       return;
-    }
+    } 
     if(inputValue == "") {
       alert("Please enter a word");
       return;
@@ -35,10 +36,24 @@ function Input() {
       alert("Your word is too long");
       return;
     }
-    setSearchSymbol(true); 
-    navigate(`/results/${inputValue}`);
 
+    //routing to relevant language pair component based on the selected pair
+    setSearchSymbol(true); 
+    if(pairId == 1) {
+      navigate(`/results/engtur/${inputValue}`);
+    } else if(pairId == 2) {
+      navigate(`/results/tureng/${inputValue}`);
+    } else if(pairId == 3) {
+      navigate(`/results/engpor/${inputValue}`);
+    } else if(pairId == 4) {
+      navigate(`/results/poreng/${inputValue}`);
+    }
     setSearchSymbol(false);
+
+    
+    //setSearchSymbol(true); 
+    //navigate(`/results/${inputValue}`);
+    //setSearchSymbol(false);
   }
 
   return (

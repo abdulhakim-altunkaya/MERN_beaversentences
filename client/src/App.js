@@ -15,7 +15,10 @@ import TestInput4 from "./components/TestInput4";
 import TestInput5 from "./components/TestInput5";
 import TestInput6A from "./components/TestInput6A";
 import TestParams2 from "./components/TestParams2";
-
+import ResultsEngtur from "./components/ResultsEngtur";
+import ResultsTureng from "./components/ResultsTureng";
+import ResultsEngpor from "./components/ResultsEngpor";
+import ResultsPoreng from "./components/ResultsPoreng";
 
 function App() {
     return (
@@ -75,7 +78,10 @@ function App() {
                     <Route path="/test5" element={ <TestInput5 /> } />
                     <Route path="/test6" element={ <TestInput6A /> } />
                     <Route path="/results/:param" element={ <TestParams2 /> } /> 
-                    <Route path="/results/engtur/:param" element={ <TestParams2 /> } /> 
+                    <Route path="/results/engtur/:param" element={ <ResultsEngtur /> } /> 
+                    <Route path="/results/tureng/:param" element={ <ResultsTureng /> } /> 
+                    <Route path="/results/engpor/:param" element={ <ResultsEngpor /> } /> 
+                    <Route path="/results/poreng/:param" element={ <ResultsPoreng /> } /> 
                     <Route path="/" element={ <WriteEngpor /> } />
                 </Routes>
             </div>
@@ -83,4 +89,4 @@ function App() {
     );
 }
 export default App;
-/*In route search, make sure component param var name is also "param"*/
+ 

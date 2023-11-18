@@ -188,7 +188,110 @@ app.post("/api/query", async (req, res) => {
     console.log("Server error: ", error.message);
     res.status(500).json({ error: "server error" });
   }
-})
+});
+
+
+
+
+
+
+
+
+
+
+
+app.post("/api/engpor/search", async (req, res) => {
+  try {
+    let searchword = req.query.word;
+    let languagePair = req.query.pair;
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "Server error: your search word is too short" });
+    }
+    if (languagePair < 0 || languagePair > 4) {
+      res.status(500).json({ error: "Server error: no valid language pair" });
+    }
+    const sentences = await ModelEngpor.find({
+      SentenceEng: { $regex: new RegExp(searchword, "iu")},
+    });
+    
+    res.status(200).json({
+      serverMessage: "Server message: word successfully searched",
+      serverResults: sentences, 
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({error: "Server error: word search failed"});
+  }
+});
+app.post("/api/poreng/search", async (req, res) => {
+  try {
+    let searchword = req.query.word;
+    let languagePair = req.query.pair;
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "Server error: your search word is too short" });
+    }
+    if (languagePair < 0 || languagePair > 4) {
+      res.status(500).json({ error: "Server error: no valid language pair" });
+    }
+    const sentences = await ModelEngpor.find({
+      SentencePor: { $regex: new RegExp(searchword, "iu")},
+    });
+    
+    res.status(200).json({
+      serverMessage: "Server message: word successfully searched",
+      serverResults: sentences, 
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({error: "Server error: word search failed"});
+  }
+});
+app.post("/api/engtur/search", async (req, res) => {
+  try {
+    let searchword = req.query.word;
+    let languagePair = req.query.pair;
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "Server error: your search word is too short" });
+    }
+    if (languagePair < 0 || languagePair > 4) {
+      res.status(500).json({ error: "Server error: no valid language pair" });
+    }
+    const sentences = await ModelEngtur.find({
+      SentenceEng: { $regex: new RegExp(searchword, "iu")},
+    });
+    
+    res.status(200).json({
+      serverMessage: "Server message: word successfully searched",
+      serverResults: sentences, 
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({error: "Server error: word search failed"});
+  }
+});
+app.post("/api/tureng/search", async (req, res) => {
+  try {
+    let searchword = req.query.word;
+    let languagePair = req.query.pair;
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "Server error: your search word is too short" });
+    }
+    if (languagePair < 0 || languagePair > 4) {
+      res.status(500).json({ error: "Server error: no valid language pair" });
+    }
+    const sentences = await ModelEngtur.find({
+      SentenceTur: { $regex: new RegExp(searchword, "iu")},
+    });
+    
+    res.status(200).json({
+      serverMessage: "Server message: word successfully searched",
+      serverResults: sentences, 
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({error: "Server error: word search failed"});
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
@@ -200,4 +303,5 @@ app.listen(PORT, () => {
 //check if you need to change the places of sentences on frontend. I mean target language sentences should be on the first column
 //different language pairs, different result components. This might solve pair stucking and also dynamic rendering of left side of
 //the webpage with target language
+/*In route search, make sure component param var name is also "param"*/
 
