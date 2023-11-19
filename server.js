@@ -21,16 +21,19 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 // Middleware to parse POST body data. This is needed for "post" requests below
 app.use(express.json({ extended: false }));
 
+//This line is for deployment platforms. Make sure you "npm run build" on client folder first.
+app.use(express.static(path.join(__dirname, 'client/build')));
+//This line is a catch-all route that handles any GET request that hasn't been matched by other routes. 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 // API route
 app.get('/readfromserver', (req, res) => {
     res.json({ message: "Hello from the server!" });
 });
  
-// Handle any requests that don't match the above
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+
 
 app.post("/writetodatabase", async (req, res) => {
   try {
