@@ -25,7 +25,7 @@ function ResultsEngpor() {
         alert("Website: Your word is too short");
         return;
       }
-      const url = `http://localhost:5000/api/engpor/search?word=${param}&pair=${pairId}`;
+      const url = `/api/engpor/search?word=${param}&pair=${pairId}`;
       const response = await axios.post(url);
       const serverData = response.data;
       setServerArray(serverData.serverResults);

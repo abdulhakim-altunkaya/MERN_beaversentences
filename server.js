@@ -301,10 +301,11 @@ app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
 });
 
-
-//check if targetCollection will work as a string value
 //check if you need to change the places of sentences on frontend. I mean target language sentences should be on the first column
 //different language pairs, different result components. This might solve pair stucking and also dynamic rendering of left side of
 //the webpage with target language
-/*In route search, make sure component param var name is also "param"*/
+/*In route search, make sure component param var name is also "param"
+Make a cleanup, for this create another project to move all useparams, re.body and req.query code
+Remove all test compnents and server routes 
+*/
 
