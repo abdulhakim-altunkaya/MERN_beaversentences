@@ -25,6 +25,8 @@ function ResultsEngtur() {
         alert("Website: Your word is too short");
         return;
       }
+      //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
+      //I am doing it in Input.js component
       const url = `/api/engtur/search?word=${param}&pair=${pairId}`;
       const response = await axios.post(url);
       const serverData = response.data;

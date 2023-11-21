@@ -22,7 +22,7 @@ function Input() {
 
   const handleSearch = () => {
     //input checks
-    if(pairId < 1 || pairId > 4) {
+    if(pairId < 1 || pairId > 8) {
       alert("You need to select a language pair");
       return;
     } 
@@ -47,6 +47,14 @@ function Input() {
       navigate(`/results/engpor/${inputValue}`);
     } else if(pairId == 4) {
       navigate(`/results/poreng/${inputValue}`);
+    } else if(pairId == 5) {
+      navigate(`/results/engger/${inputValue}`);
+    } else if(pairId == 6) {
+      navigate(`/results/gereng/${inputValue}`);
+    } else if(pairId == 7) {
+      navigate(`/results/gertur/${inputValue}`);
+    } else if(pairId == 8) {
+      navigate(`/results/turger/${inputValue}`);
     }
     setSearchSymbol(false);
 

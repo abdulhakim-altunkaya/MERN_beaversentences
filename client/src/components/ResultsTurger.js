@@ -5,7 +5,7 @@ import Mark from "mark.js";
 import { useSelector } from 'react-redux';
 
 
-function ResultsEngpor() {
+function ResultsTurger() {
   //we are getting pairId to tell backend which language pair to conduct search.
   //PairId is coming from redux storage. Redux storage gets it from dropdown menu through input component search function.
   const pairId = useSelector( (state) => state.pair)
@@ -27,7 +27,7 @@ function ResultsEngpor() {
       }
       //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
       //I am doing it in Input.js component
-      const url = `/api/engpor/search?word=${param}&pair=${pairId}`;
+      const url = `/api/tureng/search?word=${param}&pair=${pairId}`;
       const response = await axios.post(url);
       const serverData = response.data;
       setServerArray(serverData.serverResults);
@@ -56,12 +56,12 @@ function ResultsEngpor() {
             <span>Unfortunately no results for <strong>{param}</strong></span>
           :
             <div className='resultContainer2'>
-              <div className='resultMessageContainer'>Search results for <strong>{param}</strong></div>
+              <div className='resultMessageContainer' >Search results for <strong>{param}</strong></div>
               <div ref={markRef}>
                 {serverArray.map((item, index) => (
                   <div key={item._id} className='resultContainer3'>
+                    <span>{item.SentenceTur}</span>
                     <span>{item.SentenceEng}</span>
-                    <span>{item.SentencePor}</span>
                   </div>
                 ))
                 }
@@ -74,4 +74,4 @@ function ResultsEngpor() {
   )
 }
 
-export default ResultsEngpor;
+export default ResultsTurger;

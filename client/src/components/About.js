@@ -11,7 +11,7 @@ const About = () => {
       <h2>Features</h2>
       <ul>
         <li><strong>Translation Assistance:</strong> Beaver Sentences aims to assist you in finding contextually relevant translations.</li>
-        <li><strong>Language Support:</strong> Currently, we support English, Turkish, and Portuguese languages, with plans to expand to additional languages in the near future.</li>
+        <li><strong>Language Support:</strong> Currently, we support English, Turkish, German and Portuguese languages, with plans to expand to additional languages in the near future.</li>
         <li><strong>Specialized Content:</strong> We offer sentences from various specialized domains such as medicine, engineering, law, politics, and more.</li>
       </ul>
       
@@ -22,7 +22,7 @@ const About = () => {
       <p>Contributions are welcome. You can mail me at drysoftware1@gmail.com or fork this repo and push changes.</p>
       
       <h2>License</h2>
-      <p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
+      <p>This project is licensed under the MIT License</p>
       
       <h2>Contact</h2>
       <p>For inquiries, suggestions, business and advertisement cooperation, please feel free to reach out to the author, 

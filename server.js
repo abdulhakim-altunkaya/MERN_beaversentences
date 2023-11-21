@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const mongoose = require("mongoose");
 
-const DataModel = require("./DataModel");
 const ModelEngpor = require("./Models/ModelEngpor");
 const ModelEngtur = require("./Models/ModelEngtur");
 const connectDB = require("./Database");

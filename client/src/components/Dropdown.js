@@ -3,6 +3,7 @@ import '../style/dropdown.css';
 import flagUSA from './flags/usa.png';
 import flagTUR from './flags/turkey.png';
 import flagPOR from './flags/portugal.png';
+import flagGER from './flags/germany.png';
 
 import { useDispatch } from 'react-redux';
 import { setPair } from "../state/slicePair"; 
@@ -37,7 +38,7 @@ function Dropdown() {
   }, [dropdownRef]);
 
   const handleSelect = (valueFlag1, valueFlag2, valuePair, valuePairNumber) => {
-    if (valuePairNumber < 1 && valuePairNumber > 4) {
+    if (valuePairNumber < 1 && valuePairNumber > 8) {
       alert("Select language pair or refresh the page.");
       return;
     }
@@ -85,23 +86,43 @@ function Dropdown() {
         <div className="options-container">
           <div className="option-each" onClick={() => handleSelect(flagUSA, flagTUR, "English-Turkish", 1)}>
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
-            <img src={flagTUR} alt="USA Flag" className="option-icon" /> 
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             English-Turkish
           </div>
           <div className="option-each" onClick={() => handleSelect(flagTUR, flagUSA, 'Turkish-English', 2)}>
-            <img src={flagTUR} alt="USA Flag" className="option-icon" /> 
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             Turkish-English
           </div>
           <div className="option-each" onClick={() => handleSelect(flagUSA, flagPOR, 'English-Portuguese', 3)}>
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
-            <img src={flagPOR} alt="USA Flag" className="option-icon" /> 
+            <img src={flagPOR} alt="Portuguese Flag" className="option-icon" /> 
             English-Portuguese
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagPOR, flagUSA, 'Portuguese-Turkish', 4)}>
-            <img src={flagPOR} alt="USA Flag" className="option-icon" /> 
+          <div className="option-each" onClick={() => handleSelect(flagPOR, flagUSA, 'Portuguese-English', 4)}>
+            <img src={flagPOR} alt="Portugese Flag" className="option-icon" /> 
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             Portuguese-English
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagUSA, flagGER, 'English-German', 5)}>
+            <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
+            <img src={flagGER} alt="Germany Flag" className="option-icon" /> 
+            English-German
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagGER, flagUSA, 'German-English', 6)}>
+            <img src={flagGER} alt="Germany Flag" className="option-icon" /> 
+            <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
+            German-English
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagGER, flagTUR, 'German-Turkish', 7)}>
+            <img src={flagGER} alt="German Flag" className="option-icon" /> 
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
+            German-Turkish
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagTUR, flagGER, 'Turkish-German', 8)}>
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
+            <img src={flagGER} alt="Germany Flag" className="option-icon" /> 
+            Turkish-German
           </div>
           {/* More options... */}
         </div>

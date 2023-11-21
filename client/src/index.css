@@ -46,6 +46,7 @@ body{
   width: 50% !important;
 }
 .resultMessageContainer {
+  margin-top: 10px;
   background-color: #ffdddd; /* Light reddish background color */
   color: #000000; /* Black text color */
   padding: 20px; /* Add padding for better readability */
