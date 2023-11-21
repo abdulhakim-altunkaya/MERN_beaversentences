@@ -49,13 +49,12 @@ function ResultsEngtur() {
   return (
     <div>
       <div>
-        <p>{serverResponse}</p>
         <div className='resultContainer1'>
           {serverArray.length < 1 ?
             <span>Unfortunately no results for <strong>{param}</strong></span>
           :
             <div className='resultContainer2'>
-              <div>Search results for <strong>{param}</strong></div>
+              <div className='resultMessageContainer' >Search results for <strong>{param}</strong></div>
               <div ref={markRef}>
                 {serverArray.map((item, index) => (
                   <div key={item._id} className='resultContainer3'>

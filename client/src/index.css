@@ -45,4 +45,11 @@ body{
 .resultContainer3 span {
   width: 50% !important;
 }
-
+.resultMessageContainer {
+  background-color: #ffdddd; /* Light reddish background color */
+  color: #000000; /* Black text color */
+  padding: 20px; /* Add padding for better readability */
+  border-top: 1px dashed #000000; /* Dashed top border with black color */
+  border-bottom: 1px dashed #000000; 
+  font-size: 16px;
+}
