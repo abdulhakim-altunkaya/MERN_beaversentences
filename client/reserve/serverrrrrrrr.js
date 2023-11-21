@@ -28,9 +28,26 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-// API ROUTES
+// API route
+app.get('/readfromserver', (req, res) => {
+    res.json({ message: "Hello from the server!" });
+});
+ 
 
-app.post("/api/engpor", async (req, res) => {
+
+app.post("/writetodatabase", async (req, res) => {
+  try {
+    const {content} = req.body;
+    const newData = new DataModel({ content });
+    await newData.save();
+    res.json({message: "Data saved successfully / Данные сохранены"})
+  } catch (error) {
+    console.log("Ошибка сервера при сохранении данных", error.message);
+    res.status(500).send("Server error while saving data/Ошибка сервера при сохранении данных")
+  }
+})
+
+app.post("/engpor", async (req, res) => {
   try {
     const {SentenceEng, SentencePor} = req.body;
     const newData = new ModelEngpor({SentenceEng, SentencePor});
@@ -41,6 +58,149 @@ app.post("/api/engpor", async (req, res) => {
     res.status(500).send("Server error while saving data/Ошибка сервера при сохранении данных")
   }
 });
+
+app.post("/engtur", async (req, res) => {
+  try {
+    const {SentenceEng, SentenceTur} = req.body;
+    const newData = new ModelEngtur({SentenceEng, SentenceTur});
+    await newData.save();
+    res.status(200).json({message: "Greetings from Server: Data saved successfully"})
+  } catch (error) {
+    console.log("server side error", error.message);
+    res.status(500).json({message: `an error happened on server side: ${error.message}`});
+  }
+})
+
+app.get('/sentences/search', async (req, res) => {
+  const { word } = req.query;
+
+  try {
+    const sentences = await ModelEngpor.find({
+      SentenceEng: { $regex: new RegExp(word, 'i') },
+    });
+
+    res.json(sentences);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+app.get('/test3/search', (req, res) => {
+  const { searchTerm } = req.query; // Access the query parameter
+  console.log(searchTerm);
+  try {
+    res.status(200).json({ myMessage: `word processed: ${searchTerm}121231231231` });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: 'server.js try catch error' });
+  }
+});
+
+
+// GET route with route parameter (useParams)
+app.get('/api/param-route/:id', (req, res) => {
+  const { id } = req.params;
+  console.log('Received route parameter:', id);
+
+  try {
+    res.status(200).json({ myMessage: `Received route parameter: ${id}` });
+  } catch (error) {
+    console.error(error.message); 
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
+app.post("/api/goodquery", async (req, res) => {
+  try {
+    let searchword = req.query.myinputfrontend;
+    console.log(searchword);
+    const sentences = await ModelEngpor.find({
+      SentenceEng: { $regex: new RegExp(searchword, 'iu') },
+    });
+    console.log(sentences);
+    
+    res.status(200).json({ 
+      myReplyfromServer: `Received query data: ${searchword} `,
+      myArrayfromServer: sentences
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+app.post("/api/query", async (req, res) => {
+  try {
+    let searchword = req.query.search;
+    let languagePair = req.query.pair;
+    let resultsArray = [];
+
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "your search word is too short" });
+    }
+    
+    if (languagePair == 1) {
+      const sentences1 = await ModelEngtur.find({
+        SentenceEng: { $regex: new RegExp(searchword, "iu")},
+      });
+      resultsArray = sentences1;
+    } else if(languagePair == 2 ) {
+      const sentences1 = await ModelEngtur.find({
+        SentenceEng: { $regex: new RegExp(searchword, "iu")},
+      });
+      resultsArray = sentences1;
+    } else if(languagePair == 3 ) {
+      const sentences1 = await ModelEngpor.find({
+        SentenceEng: { $regex: new RegExp(searchword, "iu")},
+      });
+      resultsArray = sentences1;
+    } else if(languagePair == 4 ) {
+      const sentences1 = await ModelEngpor.find({
+        SentenceEng: { $regex: new RegExp(searchword, "iu")},
+      });
+      resultsArray = sentences1;
+    } else {
+      res.status(500).json({ error: "Server: language pair not detected. Please refresh page and choose langauge pair" });
+    }
+    console.log(resultsArray);
+    
+    if (languagePair == 1) {
+      console.log("hey 1")
+    } else if(languagePair == 2 ) {
+      console.log("hey 2")
+    } else if(languagePair == 3 ) {
+      console.log("hey 3")
+    } else if(languagePair == 4 ) {
+      console.log("hey 4")
+    } else {
+      res.status(500).json({ error: "Server: language pair not detected. Please refresh page and choose langauge pair" });
+    }
+
+    
+    const sentences = await ModelEngpor.find({
+      SentenceEng: { $regex: new RegExp(searchword, "iu")},
+    });
+    
+    res.status(200).json({
+      serverMessage: "You successfully searched",
+      serverResults: resultsArray, 
+    });
+  } catch (error) {
+    console.log("Server error: ", error.message);
+    res.status(500).json({ error: "server error" });
+  }
+});
+
+
+
+
+
+
+
+
+
 
 
 app.post("/api/engpor/search", async (req, res) => {

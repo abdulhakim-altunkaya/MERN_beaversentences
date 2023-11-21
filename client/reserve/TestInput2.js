@@ -1,81 +1,37 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
+import { setColor } from '../state/colorSlice';
+
+import TestInput2B from "./TestInput2B";
 
 function TestInput2() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+    
+    const dispatch = useDispatch(); 
 
-  const handleSearch = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/sentences/search?word=${searchQuery}`);
+    let [inputValue, setInputValue] = useState("");
 
-      if (response.status === 200) {
-        const data = response.data;
-        setSearchResults(data);
-      } else {
-        console.error('Error searching for results');
-      }
-    } catch (error) {
-      console.error('Error searching for results:', error);
-    }
-  };
+    const handleColorChange = (e) => {
+        const color = e.target.value;
+        setInputValue(e.target.value);
+        dispatch(setColor(color));
+    };
 
-  return (
-    <div>
-      <input
-        type="text"
-        placeholder="Enter a search query"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
-      
-      <div>
-        {searchResults.length > 0 ? (
-          <ul>
-            {searchResults.map((result, index) => (
-              <li key={index}>{result.sentenceText}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>No results found.</p>
-        )}
-      </div>
-    </div>
-  );
+    return (
+        <div>
+            <div>
+                <label htmlFor="colorInput">Choose a color: </label>
+                <input
+                    type="text"
+                    id="colorInput"
+                    value={inputValue}
+                    onChange={handleColorChange}
+                />
+            </div>
+            <p>{inputValue}</p>
+            <TestInput2B />
+        </div>
+
+    )
 }
 
-export default TestInput2;
-
-
-
-
-
-const rootReducer = combineReducers({
-  color: colorReducer,
-  dynamicValue: dynamicValueReducer,
-});
-
-
-// reducers.js
-const colorReducer = (state = '', action) => {
-    switch (action.type) {
-      case 'SET_COLOR':
-        return action.payload;
-      default:
-        return state;
-    }
-  };
-  
-  const dynamicValueReducer = (state = '', action) => {
-    switch (action.type) {
-      case 'SET_DYNAMIC_VALUE':
-        return action.payload;
-      default:
-        return state;
-    }
-  };
-  
-
-  
-  export default rootReducer;
+export default TestInput2

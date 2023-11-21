@@ -11,7 +11,7 @@ function WriteEngpor() {
 
     const sendDataToServer = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/engpor', { SentenceEng: sentenceEng, SentencePor: sentencePor});
+            const response = await axios.post('http://localhost:5000/api/engpor', { SentenceEng: sentenceEng, SentencePor: sentencePor});
             console.log(response.data);
             alert("Data saved to the MongoDB");
             setSentenceEng('');
