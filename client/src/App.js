@@ -10,9 +10,11 @@ import ResultsTureng from "./components/ResultsTureng";
 import ResultsEngpor from "./components/ResultsEngpor";
 import ResultsPoreng from "./components/ResultsPoreng";
 import ResultsEngger from "./components/ResultsEngger";
-import ResultsTurger from "./components/ResultsTurger";
+import ResultsTurger from "./components/ResultsTurger"; 
 import ResultsGertur from "./components/ResultsGertur";
 import ResultsGereng from "./components/ResultsGereng";
+import ResultsEngesp from "./components/ResultsEngesp";
+import ResultsEspeng from "./components/ResultsEspeng";
 
 function App() {
     return (
@@ -22,7 +24,7 @@ function App() {
                 <MainContent />
                 <Routes>
                     <Route path="/about" element={ <About /> } />
-                    <Route path="/write1" element={ <WriteEngpor /> } />
+                    <Route path="/" element={ <WriteEngpor /> } />
                     <Route path="/results/engtur/:param" element={ <ResultsEngtur /> } /> 
                     <Route path="/results/tureng/:param" element={ <ResultsTureng /> } /> 
                     <Route path="/results/engpor/:param" element={ <ResultsEngpor /> } /> 
@@ -32,6 +34,9 @@ function App() {
                     <Route path="/results/turger/:param" element={ <ResultsTurger /> } /> 
                     <Route path="/results/gereng/:param" element={ <ResultsGereng /> } /> 
                     <Route path="/results/gertur/:param" element={ <ResultsGertur /> } /> 
+
+                    <Route path="/results/espeng/:param" element={ <ResultsEspeng /> } /> 
+                    <Route path="/results/engesp/:param" element={ <ResultsEngesp /> } /> 
                 </Routes>
             </div>
         </Router>

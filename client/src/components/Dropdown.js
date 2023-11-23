@@ -4,6 +4,7 @@ import flagUSA from './flags/usa.png';
 import flagTUR from './flags/turkey.png';
 import flagPOR from './flags/portugal.png';
 import flagGER from './flags/germany.png';
+import flagESP from './flags/spain.png';
 
 import { useDispatch } from 'react-redux';
 import { setPair } from "../state/slicePair"; 
@@ -123,6 +124,16 @@ function Dropdown() {
             <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             <img src={flagGER} alt="Germany Flag" className="option-icon" /> 
             Turkish-German
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagUSA, flagESP, 'English-Spanish', 9)}>
+            <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
+            <img src={flagESP} alt="Spain Flag" className="option-icon" /> 
+            English-Spanish
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagESP, flagUSA, 'Spanish-English', 10)}>
+            <img src={flagESP} alt="Spain Flag" className="option-icon" /> 
+            <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
+            Spanish-English
           </div>
           {/* More options... */}
         </div>

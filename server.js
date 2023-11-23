@@ -65,8 +65,8 @@ app.post("/api/engtur", async (req, res) => {
 });
 app.post("/api/engger", async (req, res) => {
   try {
-    const {SentenceEng, SentencePor} = req.body;
-    const newData = new ModelEngger({SentenceEng, SentencePor});
+    const {SentenceEng, SentenceGer} = req.body;
+    const newData = new ModelEngger({SentenceEng, SentenceGer});
     await newData.save();
     res.json({message: "Data saved successfully / Данные сохранены"})
   } catch (error) {
@@ -76,8 +76,8 @@ app.post("/api/engger", async (req, res) => {
 });
 app.post("/api/engesp", async (req, res) => {
   try {
-    const {SentenceEng, SentencePor} = req.body;
-    const newData = new ModelEngesp({SentenceEng, SentencePor});
+    const {SentenceEng, SentenceEsp} = req.body;
+    const newData = new ModelEngesp({SentenceEng, SentenceEsp});
     await newData.save();
     res.json({message: "Data saved successfully / Данные сохранены"})
   } catch (error) {
@@ -87,8 +87,8 @@ app.post("/api/engesp", async (req, res) => {
 });
 app.post("/api/gertur", async (req, res) => {
   try {
-    const {SentenceEng, SentencePor} = req.body;
-    const newData = new ModelGertur({SentenceEng, SentencePor});
+    const {SentenceGer, SentenceTur} = req.body;
+    const newData = new ModelGertur({SentenceGer, SentenceTur});
     await newData.save();
     res.json({message: "Data saved successfully / Данные сохранены"})
   } catch (error) {
@@ -214,6 +214,75 @@ app.post("/api/turger/search", async (req, res) => {
     }
     const sentences = await ModelGertur.find({
       SentenceTur: { $regex: new RegExp(searchword, "iu")},
+    });
+    
+    res.status(200).json({
+      serverMessage: "Server message: word successfully searched",
+      serverResults: sentences, 
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({error: "Server error: word search failed"});
+  }
+});
+app.post("/api/gertur/search", async (req, res) => {
+  try {
+    let searchword = req.query.word;
+    let languagePair = req.query.pair;
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "Server error: your search word is too short" });
+    }
+    if (languagePair < 0 || languagePair > 10) {
+      res.status(500).json({ error: "Server error: no valid language pair" });
+    }
+    const sentences = await ModelGertur.find({
+      SentenceGer: { $regex: new RegExp(searchword, "iu")},
+    });
+    
+    res.status(200).json({
+      serverMessage: "Server message: word successfully searched",
+      serverResults: sentences, 
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({error: "Server error: word search failed"});
+  }
+});
+app.post("/api/engger/search", async (req, res) => {
+  try {
+    let searchword = req.query.word;
+    let languagePair = req.query.pair;
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "Server error: your search word is too short" });
+    }
+    if (languagePair < 0 || languagePair > 10) {
+      res.status(500).json({ error: "Server error: no valid language pair" });
+    }
+    const sentences = await ModelEngger.find({
+      SentenceEng: { $regex: new RegExp(searchword, "iu")},
+    });
+    
+    res.status(200).json({
+      serverMessage: "Server message: word successfully searched",
+      serverResults: sentences, 
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({error: "Server error: word search failed"});
+  }
+});
+app.post("/api/gereng/search", async (req, res) => {
+  try {
+    let searchword = req.query.word;
+    let languagePair = req.query.pair;
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "Server error: your search word is too short" });
+    }
+    if (languagePair < 0 || languagePair > 10) {
+      res.status(500).json({ error: "Server error: no valid language pair" });
+    }
+    const sentences = await ModelEngger.find({
+      SentenceGer: { $regex: new RegExp(searchword, "iu")},
     });
     
     res.status(200).json({
