@@ -33,7 +33,15 @@ app.get('*', (req, res) => {
 
 
 
-
+//REQUEST LIMITING MIDDLEWARE
+//Limiting requests per IP address to prevent robots overwhelming website
+const rateLimit = require("express-rate-limit");
+//limiter options
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // limiting each IP to 10 requests per windowMs
+  message: { error: "Too many requests from this IP, please try again later." },
+});
 
 
 
@@ -104,12 +112,7 @@ app.post("/api/gertur", async (req, res) => {
 
 
 
-
-
-
-
-
-app.post("/api/engpor/search", async (req, res) => {
+app.post("/api/engpor/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
@@ -132,7 +135,7 @@ app.post("/api/engpor/search", async (req, res) => {
     res.status(500).json({error: "Server error: word search failed"});
   }
 });
-app.post("/api/poreng/search", async (req, res) => {
+app.post("/api/poreng/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
@@ -155,7 +158,7 @@ app.post("/api/poreng/search", async (req, res) => {
     res.status(500).json({error: "Server error: word search failed"});
   }
 });
-app.post("/api/engtur/search", async (req, res) => {
+app.post("/api/engtur/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
@@ -178,7 +181,7 @@ app.post("/api/engtur/search", async (req, res) => {
     res.status(500).json({error: "Server error: word search failed"});
   }
 });
-app.post("/api/tureng/search", async (req, res) => {
+app.post("/api/tureng/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
@@ -202,7 +205,7 @@ app.post("/api/tureng/search", async (req, res) => {
   }
 });
 
-app.post("/api/turger/search", async (req, res) => {
+app.post("/api/turger/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
@@ -225,7 +228,7 @@ app.post("/api/turger/search", async (req, res) => {
     res.status(500).json({error: "Server error: word search failed"});
   }
 });
-app.post("/api/gertur/search", async (req, res) => {
+app.post("/api/gertur/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
@@ -248,7 +251,7 @@ app.post("/api/gertur/search", async (req, res) => {
     res.status(500).json({error: "Server error: word search failed"});
   }
 });
-app.post("/api/engger/search", async (req, res) => {
+app.post("/api/engger/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
@@ -271,7 +274,7 @@ app.post("/api/engger/search", async (req, res) => {
     res.status(500).json({error: "Server error: word search failed"});
   }
 });
-app.post("/api/gereng/search", async (req, res) => {
+app.post("/api/gereng/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
@@ -294,7 +297,7 @@ app.post("/api/gereng/search", async (req, res) => {
     res.status(500).json({error: "Server error: word search failed"});
   }
 });
-app.post("/api/engesp/search", async (req, res) => {
+app.post("/api/engesp/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
@@ -317,7 +320,7 @@ app.post("/api/engesp/search", async (req, res) => {
     res.status(500).json({error: "Server error: word search failed"});
   }
 });
-app.post("/api/espeng/search", async (req, res) => {
+app.post("/api/espeng/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
@@ -346,12 +349,14 @@ app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
 });
 
-//check if you need to change the places of sentences on frontend. I mean target language sentences should be on the first column
-//different language pairs, different result components. This might solve pair stucking and also dynamic rendering of left side of
-//the webpage with target language
-/*In route search, make sure component param var name is also "param"
+
+/*
 Make a cleanup, for this create another project to move all useparams, re.body and req.query code
 Remove all test compnents and server routes 
 Extensive error management. Example is in chatgpt
+Limit the number of results, maybe you can change them with additional click.
+Domain register with Render.com
+pay Render.com for hosting website
+Add files to mongodb
 */
 
