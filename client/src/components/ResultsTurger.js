@@ -27,7 +27,7 @@ function ResultsTurger() {
       }
       //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
       //I am doing it in Input.js component
-      const url = `/api/tureng/search?word=${param}&pair=${pairId}`;
+      const url = `/api/turger/search?word=${param}&pair=${pairId}`;
       const response = await axios.post(url);
       const serverData = response.data;
       setServerArray(serverData.serverResults);
@@ -61,7 +61,7 @@ function ResultsTurger() {
                 {serverArray.map((item, index) => (
                   <div key={item._id} className='resultContainer3'>
                     <span>{item.SentenceTur}</span>
-                    <span>{item.SentenceEng}</span>
+                    <span>{item.SentenceGer}</span>
                   </div>
                 ))
                 }
