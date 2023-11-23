@@ -27,7 +27,7 @@ function ResultsGertur() {
       }
       //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
       //I am doing it in Input.js component
-      const url = `/api/tureng/search?word=${param}&pair=${pairId}`;
+      const url = `/api/gertur/search?word=${param}&pair=${pairId}`;
       const response = await axios.post(url);
       const serverData = response.data;
       setServerArray(serverData.serverResults);
@@ -60,8 +60,8 @@ function ResultsGertur() {
               <div ref={markRef}>
                 {serverArray.map((item, index) => (
                   <div key={item._id} className='resultContainer3'>
+                    <span>{item.SentenceGer}</span>
                     <span>{item.SentenceTur}</span>
-                    <span>{item.SentenceEng}</span>
                   </div>
                 ))
                 }
