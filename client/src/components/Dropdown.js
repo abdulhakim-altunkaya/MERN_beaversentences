@@ -39,7 +39,7 @@ function Dropdown() {
   }, [dropdownRef]);
 
   const handleSelect = (valueFlag1, valueFlag2, valuePair, valuePairNumber) => {
-    if (valuePairNumber < 1 && valuePairNumber > 8) {
+    if (valuePairNumber < 1 || valuePairNumber > 12) {
       alert("Select language pair or refresh the page.");
       return;
     }
@@ -134,6 +134,16 @@ function Dropdown() {
             <img src={flagESP} alt="Spain Flag" className="option-icon" /> 
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             Spanish-English
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagUSA, flagTUR, "English-Turkish", 11)}>
+            <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
+            English-Turkish (Technical)
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagTUR, flagUSA, 'Turkish-English', 12)}>
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
+            <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
+            Turkish-English (Technical)
           </div>
           {/* More options... */}
         </div>

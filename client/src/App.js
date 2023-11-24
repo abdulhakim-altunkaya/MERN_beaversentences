@@ -15,6 +15,8 @@ import ResultsGertur from "./components/ResultsGertur";
 import ResultsGereng from "./components/ResultsGereng";
 import ResultsEngesp from "./components/ResultsEngesp";
 import ResultsEspeng from "./components/ResultsEspeng";
+import ResultsTechET from "./components/ResultsTechET";
+import ResultsTechTE from "./components/ResultsTechTE";
 
 function App() {
     return (
@@ -37,6 +39,8 @@ function App() {
 
                     <Route path="/results/espeng/:param" element={ <ResultsEspeng /> } /> 
                     <Route path="/results/engesp/:param" element={ <ResultsEngesp /> } /> 
+                    <Route path="/results/techet/:param" element={ <ResultsTechET /> } /> 
+                    <Route path="/results/techte/:param" element={ <ResultsTechTE /> } /> 
                 </Routes>
             </div>
         </Router>

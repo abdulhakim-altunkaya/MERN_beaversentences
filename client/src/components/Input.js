@@ -22,7 +22,7 @@ function Input() {
 
   const handleSearch = () => {
     //input checks
-    if(pairId < 1 || pairId > 10) {
+    if(pairId < 1 || pairId > 12) {
       alert("You need to select a language pair");
       return;
     } 
@@ -59,6 +59,10 @@ function Input() {
       navigate(`/results/engesp/${inputValue}`);
     } else if(pairId == 10) {
       navigate(`/results/espeng/${inputValue}`);
+    } else if(pairId == 11) {
+      navigate(`/results/techet/${inputValue}`);
+    } else if(pairId == 12) {
+      navigate(`/results/techte/${inputValue}`);
     }
     setSearchSymbol(false);
 

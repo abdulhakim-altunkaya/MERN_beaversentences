@@ -7,6 +7,7 @@ const ModelEngtur = require("./Models/ModelEngtur");
 const ModelEngger = require("./Models/ModelEngger");
 const ModelGertur = require("./Models/ModelGertur");
 const ModelEngesp = require("./Models/ModelEngesp");
+const ModelEngturTech = require("./Models/ModelEngturTech");
 
 const connectDB = require("./Database");
 connectDB();
@@ -104,7 +105,17 @@ app.post("/api/gertur", async (req, res) => {
     res.status(500).send("Server error while saving data/Ошибка сервера при сохранении данных")
   }
 });
-
+app.post("/api/techet", async (req, res) => {
+  try {
+    const {SentenceEng, SentenceTur} = req.body;
+    const newData = new ModelEngturTech({SentenceEng, SentenceTur});
+    await newData.save();
+    res.json({message: "Data saved successfully / Данные сохранены"})
+  } catch (error) {
+    console.log("Ошибка сервера при сохранении данных", error.message);
+    res.status(500).send("Server error while saving data/Ошибка сервера при сохранении данных")
+  }
+});
 
 
 
@@ -119,7 +130,7 @@ app.post("/api/engpor/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 10) {
+    if (languagePair < 0 || languagePair > 12) {
       res.status(500).json({ error: "Server error: no valid language pair" });
     }
     const sentences = await ModelEngpor.find({
@@ -142,7 +153,7 @@ app.post("/api/poreng/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 10) {
+    if (languagePair < 0 || languagePair > 12) {
       res.status(500).json({ error: "Server error: no valid language pair" });
     }
     const sentences = await ModelEngpor.find({
@@ -165,7 +176,7 @@ app.post("/api/engtur/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 10) {
+    if (languagePair < 0 || languagePair > 12) {
       res.status(500).json({ error: "Server error: no valid language pair" });
     }
     const sentences = await ModelEngtur.find({
@@ -188,7 +199,7 @@ app.post("/api/tureng/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 10) {
+    if (languagePair < 0 || languagePair > 12) {
       res.status(500).json({ error: "Server error: no valid language pair" });
     }
     const sentences = await ModelEngtur.find({
@@ -212,7 +223,7 @@ app.post("/api/turger/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 10) {
+    if (languagePair < 0 || languagePair > 12) {
       res.status(500).json({ error: "Server error: no valid language pair" });
     }
     const sentences = await ModelGertur.find({
@@ -235,7 +246,7 @@ app.post("/api/gertur/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 10) {
+    if (languagePair < 0 || languagePair > 12) {
       res.status(500).json({ error: "Server error: no valid language pair" });
     }
     const sentences = await ModelGertur.find({
@@ -258,7 +269,7 @@ app.post("/api/engger/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 10) {
+    if (languagePair < 0 || languagePair > 12) {
       res.status(500).json({ error: "Server error: no valid language pair" });
     }
     const sentences = await ModelEngger.find({
@@ -281,7 +292,7 @@ app.post("/api/gereng/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 10) {
+    if (languagePair < 0 || languagePair > 12) {
       res.status(500).json({ error: "Server error: no valid language pair" });
     }
     const sentences = await ModelEngger.find({
@@ -304,7 +315,7 @@ app.post("/api/engesp/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 10) {
+    if (languagePair < 0 || languagePair > 12) {
       res.status(500).json({ error: "Server error: no valid language pair" });
     }
     const sentences = await ModelEngesp.find({
@@ -327,11 +338,57 @@ app.post("/api/espeng/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ error: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 10) {
+    if (languagePair < 0 || languagePair > 12) {
       res.status(500).json({ error: "Server error: no valid language pair" });
     }
     const sentences = await ModelEngesp.find({
       SentenceEsp: { $regex: new RegExp(searchword, "iu")},
+    });
+    
+    res.status(200).json({
+      serverMessage: "Server message: word successfully searched",
+      serverResults: sentences, 
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({error: "Server error: word search failed"});
+  }
+});
+app.post("/api/techet/search", limiter, async (req, res) => {
+  try {
+    let searchword = req.query.word;
+    let languagePair = req.query.pair;
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "Server error: your search word is too short" });
+    }
+    if (languagePair < 0 || languagePair > 12) {
+      res.status(500).json({ error: "Server error: no valid language pair" });
+    }
+    const sentences = await ModelEngturTech.find({
+      SentenceEng: { $regex: new RegExp(searchword, "iu")},
+    });
+    
+    res.status(200).json({
+      serverMessage: "Server message: word successfully searched",
+      serverResults: sentences, 
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({error: "Server error: word search failed"});
+  }
+});
+app.post("/api/techte/search", limiter, async (req, res) => {
+  try {
+    let searchword = req.query.word;
+    let languagePair = req.query.pair;
+    if (searchword.length < 4 ) {
+      res.status(500).json({ error: "Server error: your search word is too short" });
+    }
+    if (languagePair < 0 || languagePair > 12) {
+      res.status(500).json({ error: "Server error: no valid language pair" });
+    }
+    const sentences = await ModelEngturTech.find({
+      SentenceTur: { $regex: new RegExp(searchword, "iu")},
     });
     
     res.status(200).json({
@@ -358,5 +415,6 @@ Limit the number of results, maybe you can change them with additional click.
 Domain register with Render.com
 pay Render.com for hosting website
 Add files to mongodb
+NEWCOM598
 */
 

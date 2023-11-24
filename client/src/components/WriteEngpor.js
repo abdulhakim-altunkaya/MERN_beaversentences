@@ -17,6 +17,9 @@ function WriteEngpor() {
     const [sentenceTur2, setSentenceTur2] = useState('');
     const [sentenceGer2, setSentenceGer2] = useState('');
 
+    const [sentenceEng5, setSentenceEng5] = useState('');
+    const [sentenceTur3, setSentenceTur3] = useState('');
+
 
     const saveEngpor = async () => {
         try {
@@ -57,6 +60,13 @@ function WriteEngpor() {
         alert("Data saved to the MongoDB");
         setSentenceGer2('');
         setSentenceTur2('');
+    };
+    const saveTechet = async () => { 
+        const response = await axios.post('http://localhost:5000/api/techet', { SentenceEng: sentenceEng5, SentenceTur: sentenceTur3});
+        console.log(response.data);
+        alert("Data saved to the MongoDB");
+        setSentenceEng5('');
+        setSentenceTur3('');
     };
     
     return (
@@ -134,6 +144,22 @@ function WriteEngpor() {
                 placeholder="Enter Turkish sentence..."
             />
             <button onClick={saveGertur}>Save GERTUR</button>
+            <br/><br/>
+
+
+            <input 
+                type="text" 
+                value={sentenceEng5}
+                onChange={(e) => setSentenceEng5(e.target.value)}
+                placeholder="Enter English sentence..."
+            />
+            <input 
+                type="text" 
+                value={sentenceTur3}
+                onChange={(e) => setSentenceTur3(e.target.value)}
+                placeholder="Enter Turkish sentence..."
+            />
+            <button onClick={saveTechet}>Save TECH</button>
             <br/><br/>
         </div>
     );
