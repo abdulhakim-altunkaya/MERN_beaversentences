@@ -19,41 +19,61 @@ function ResultsEngesp() {
   const markRef = useRef(null);//we are using mark.js and useRef to highlight the searched word in results
 
   useEffect(() => {
-    const getSentences = async () => {
-      //there are security checks in Input component, just in case I am putting one more here
-      if (param.length < 4) {
-        alert("Website: Your word is too short");
-        return;
+    try {
+      const getSentences = async () => {
+        //there are security checks in Input component, just in case I am putting one more here
+        if (param.length < 4) {
+          alert("Website: Your word is too short");
+          return;
+        }
+        //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
+        //I am doing it in Input.js component
+        const url = `/api/engesp/search?word=${param}&pair=${pairId}`;
+        const response = await axios.post(url);
+        const serverData = response.data;
+        setServerArray(serverData.serverResults);
+        setServerResponse(serverData.serverMessage);
+        setTimeout(() => {
+          highlightWord();
+        }, 0);
       }
-      //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
-      //I am doing it in Input.js component
-      const url = `/api/engesp/search?word=${param}&pair=${pairId}`;
-      const response = await axios.post(url);
-      const serverData = response.data;
-      setServerArray(serverData.serverResults);
-      setServerResponse(serverData.serverMessage);
-      setTimeout(() => {
-        highlightWord();
-      }, 0);
-    }
-
-    const highlightWord = async () => {
-      if(markRef.current) {
-        const markInstance = new Mark(markRef.current);
-        markInstance.unmark();
-        markInstance.mark(param);
+  
+      const highlightWord = async () => {
+        if(markRef.current) {
+          const markInstance = new Mark(markRef.current);
+          markInstance.unmark();
+          markInstance.mark(param);
+        }
       }
+      getSentences();
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        setServerResponse(`Error: ${error.response.data.errorMessage} and Status: ${error.response.status}`)
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(error.request);
+        setServerResponse('No response received from the server');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
     }
-    getSentences();
   }, [param]);
 
-
+  
   return (
     <div>
       <div>
         <div className='resultContainer1'>
           {serverArray.length < 1 ?
-            <span>Unfortunately no results for <strong>{param}</strong></span>
+            <span className='negativeResultSpan'>Unfortunately no results for <strong>{param}</strong> <br/>
+            {serverResponse}
+            </span>
           :
             <div className='resultContainer2'>
               <div className='resultMessageContainer' >Search results for <strong>{param}</strong></div>

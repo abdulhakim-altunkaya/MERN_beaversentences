@@ -53,7 +53,7 @@ function ResultsTechTE() {
       <div>
         <div className='resultContainer1'>
           {serverArray.length < 1 ?
-            <span>Unfortunately no results for <strong>{param}</strong></span>
+            <span className='negativeResultSpan'>Unfortunately no results for <strong>{param}</strong></span>
           :
             <div className='resultContainer2'>
               <div className='resultMessageContainer' >Search results for <strong>{param}</strong></div>
