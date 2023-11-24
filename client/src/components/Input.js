@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {useNavigate} from "react-router-dom";
 import '../style/input.css';
 //We will prevent users to make search if language pair is not selected.
@@ -6,6 +6,9 @@ import '../style/input.css';
 import { useSelector } from "react-redux";
 
 function Input() {
+  //For visual and practical reasons, I want to select input text after button click.
+  const inputRef = useRef(null);
+
   //fetching pair number from redux storage
   const pairId = useSelector( (state) => state.pair)
 
@@ -65,7 +68,7 @@ function Input() {
       navigate(`/results/techte/${inputValue}`);
     }
     setSearchSymbol(false);
-
+    inputRef.current.select();
     
     //setSearchSymbol(true); 
     //navigate(`/results/${inputValue}`);
@@ -78,6 +81,7 @@ function Input() {
         className="inputField" 
         placeholder="Enter text here"
         minLength="3" 
+        ref={inputRef}
         value={inputValue}
         onChange={e => setInputValue(e.target.value)} 
         onKeyUp={handleKeyPress} />
