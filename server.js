@@ -315,11 +315,11 @@ app.post("/api/engesp/search", limiter, async (req, res) => {
     if (searchword.length < 4 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
-    if (languagePair < 0 || languagePair > 12) {
+    if (languagePair < 0 || languagePair > 4) {
       res.status(500).json({ errorMessage: "Server error: no valid language pair" });
     }
     const sentences = await ModelEngesp.find({ 
-      SentenceEngXXX: { $regex: new RegExp(searchword, "iu")},
+      SentenceEng: { $regex: new RegExp(searchword, "iu")},
     });
     
     res.status(200).json({
