@@ -17,24 +17,31 @@ function ResultsEngger() {
   let [serverArray, setServerArray] = useState([]);
 
   const markRef = useRef(null);//we are using mark.js and useRef to highlight the searched word in results
-
+    
   useEffect(() => {
+
     const getSentences = async () => {
-      //there are security checks in Input component, just in case I am putting one more here
-      if (param.length < 4) {
-        alert("Website: Your word is too short");
-        return;
+      try {
+        //there are security checks in Input component, just in case I am putting one more here
+        if (param.length < 4) {
+          alert("Website: Your word is too short");
+          return;
+        }
+        //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
+        //I am doing it in Input.js component
+        const url = `/api/engger/search?word=${param}&pair=${pairId}`;
+        const response = await axios.post(url);
+        const serverData = response.data;
+        setServerArray(serverData.serverResults);
+        setServerResponse(serverData.serverMessage);
+        setTimeout(() => {
+          highlightWord();
+        }, 0);
+      } catch (error) {
+        console.log("Error specific message:", error.message);
+        console.log("Error general message:", error);
+        setServerResponse(error.response.data.errorMessage);
       }
-      //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
-      //I am doing it in Input.js component
-      const url = `/api/engger/search?word=${param}&pair=${pairId}`;
-      const response = await axios.post(url);
-      const serverData = response.data;
-      setServerArray(serverData.serverResults);
-      setServerResponse(serverData.serverMessage);
-      setTimeout(() => {
-        highlightWord();
-      }, 0);
     }
 
     const highlightWord = async () => {
@@ -44,16 +51,24 @@ function ResultsEngger() {
         markInstance.mark(param);
       }
     }
-    getSentences();
+    getSentences().catch((error) => {
+      // Handle errors that occur during the asynchronous operation
+      console.log("Async function error catch:", error.response.data.errorMessage);
+      console.log("Async generel error:", error)
+    })
+
   }, [param]);
 
 
-  return (
+  return ( 
     <div>
       <div>
         <div className='resultContainer1'>
           {serverArray.length < 1 ?
-            <span className='negativeResultSpan'>Unfortunately no results for <strong>{param}</strong></span>
+            <div className='resultMessageContainer'>
+              <span>Unfortunately no results for <strong>{param}</strong> </span> <br/> <br/>
+              <span>{serverResponse} </span>
+            </div>
           :
             <div className='resultContainer2'>
               <div className='resultMessageContainer' >Search results for <strong>{param}</strong></div>
