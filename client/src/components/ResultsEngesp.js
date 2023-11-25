@@ -31,8 +31,8 @@ function ResultsEngesp() {
         const url = `/api/engesp/search?word=${param}&pair=${pairId}`;
         const response = await axios.post(url);
         if (response.status !== 200) {
-          console.log("hey hey", response.data.errorMessage);
-          return;
+          console.log("hey hey 1:", response.data.errorMessage);
+          throw new Error("GOOD LAWD: Custom error message: Something went wrong!");
         }
         const serverData = response.data;
         setServerArray(serverData.serverResults);
@@ -51,7 +51,8 @@ function ResultsEngesp() {
       }
       getSentences();
     } catch (error) {
-      console.log(error.message)
+      console.log("hey hey 3:", error.message);
+      console.log("hey hey 2:", error.data.errorMessage);
     }
   }, [param]);
 
