@@ -30,6 +30,7 @@ function ResultsEngesp() {
         //I am doing it in Input.js component
         const url = `/api/engesp/search?word=${param}&pair=${pairId}`;
         const response = await axios.post(url);
+        console.log("hey hey 5", response.status);
         if (response.status !== 200) {
           console.log("hey hey 1:", response.data.errorMessage);
           throw new Error("GOOD LAWD: Custom error message: Something went wrong!");
@@ -49,7 +50,10 @@ function ResultsEngesp() {
           markInstance.mark(param);
         }
       }
-      getSentences();
+      getSentences().catch((error) => {
+        // Handle errors that occur during the asynchronous operation
+        console.log("hey hey 6 Async error:", error.message);
+      })
     } catch (error) {
       console.log("hey hey 3:", error.message);
       console.log("hey hey 2:", error.data.errorMessage);
