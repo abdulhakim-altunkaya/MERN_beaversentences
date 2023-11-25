@@ -39,6 +39,7 @@ function ResultsEngesp() {
           }, 0);
         } catch (error) {
           console.log("hey hey 3:", error.message);
+          console.log("hey hey 4:", error);
           setServerResponse(error.data.errorMessage);
         }
       }
@@ -53,6 +54,7 @@ function ResultsEngesp() {
       getSentences().catch((error) => {
         // Handle errors that occur during the asynchronous operation
         console.log("Async function error catch:", error.message);
+        console.log("Async generel error:", error)
       })
 
   }, [param]);
