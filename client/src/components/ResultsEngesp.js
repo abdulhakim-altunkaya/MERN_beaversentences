@@ -19,28 +19,27 @@ function ResultsEngesp() {
   const markRef = useRef(null);//we are using mark.js and useRef to highlight the searched word in results
 
   useEffect(() => {
-    try {
+
       const getSentences = async () => {
-        //there are security checks in Input component, just in case I am putting one more here
-        if (param.length < 4) {
-          alert("Website: Your word is too short");
-          return;
+        try {
+          //there are security checks in Input component, just in case I am putting one more here
+          if (param.length < 4) {
+            alert("Website: Your word is too short");
+            return;
+          }
+          //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
+          //I am doing it in Input.js component
+          const url = `/api/engesp/search?word=${param}&pair=${pairId}`;
+          const response = await axios.post(url);
+          const serverData = response.data;
+          setServerArray(serverData.serverResults);
+          setServerResponse(serverData.serverMessage);
+          setTimeout(() => {
+            highlightWord();
+          }, 0);
+        } catch (error) {
+          console.log("hey hey 3:", error.message);
         }
-        //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
-        //I am doing it in Input.js component
-        const url = `/api/engesp/search?word=${param}&pair=${pairId}`;
-        const response = await axios.post(url);
-        console.log("hey hey 5", response.status);
-        if (response.status !== 200) {
-          console.log("hey hey 1:", response.data.errorMessage);
-          throw new Error("GOOD LAWD: Custom error message: Something went wrong!");
-        }
-        const serverData = response.data;
-        setServerArray(serverData.serverResults);
-        setServerResponse(serverData.serverMessage);
-        setTimeout(() => {
-          highlightWord();
-        }, 0);
       }
   
       const highlightWord = async () => {
@@ -52,12 +51,10 @@ function ResultsEngesp() {
       }
       getSentences().catch((error) => {
         // Handle errors that occur during the asynchronous operation
-        console.log("hey hey 6 Async error:", error.message);
+        console.log("Async function error catch:", error.message);
+        console.log("hey hey 2:", error.data.errorMessage);
       })
-    } catch (error) {
-      console.log("hey hey 3:", error.message);
-      console.log("hey hey 2:", error.data.errorMessage);
-    }
+
   }, [param]);
 
   
