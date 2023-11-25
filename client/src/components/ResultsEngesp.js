@@ -38,8 +38,8 @@ function ResultsEngesp() {
             highlightWord();
           }, 0);
         } catch (error) {
-          console.log("hey hey 3:", error.message);
-          console.log("hey hey 4:", error);
+          console.log("Error specific message:", error.message);
+          console.log("Error general message:", error);
           setServerResponse(error.response.data.errorMessage);
         }
       }
@@ -65,7 +65,7 @@ function ResultsEngesp() {
       <div>
         <div className='resultContainer1'>
           {serverArray.length < 1 ?
-            <span className='negativeResultSpan'>Unfortunately no results for <strong>{param}</strong> <br/>
+            <span className='resultMessageContainer'>Unfortunately no results for <strong>{param}</strong> <br/> <br/>
             {serverResponse}
             </span>
           :
