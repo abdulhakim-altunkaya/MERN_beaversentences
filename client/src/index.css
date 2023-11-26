@@ -102,8 +102,8 @@
     flex-direction: column;
   }
   .resultContainer3 {
-    padding: 4px;
-    margin: 3px;
+    padding: 2px;
+    margin: 2px;
     display: flex;
     flex-direction: row;
     border-bottom: 2px solid #ddd;
@@ -113,13 +113,13 @@
     padding: 8px;
   }
   .resultMessageContainer {
-    margin-top: 10px;
+    margin-top: 6px;
     background-color: #ffdddd; /* Light reddish background color */
     color: #000000; /* Black text color */
-    padding: 14px; /* Add padding for better readability */
+    padding: 8px; /* Add padding for better readability */
     border-top: 1px dashed #000000; /* Dashed top border with black color */
     border-bottom: 1px dashed #000000; 
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .negativeResultSpan {
