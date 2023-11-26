@@ -100,6 +100,7 @@
   .resultContainer2 {
     display: flex;
     flex-direction: column;
+    font-size: 12px;
   }
   .resultContainer3 {
     padding: 2px;
