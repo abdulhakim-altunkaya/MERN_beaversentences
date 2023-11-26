@@ -66,7 +66,7 @@ function ResultsEngger() {
         <div className='resultContainer1'>
           {serverArray.length < 1 ?
             <div className='resultMessageContainer'>
-              <span>Unfortunately no results for <strong>{param}</strong> </span> <br/> <br/>
+              <span>Unfortunately no results for:  <strong> {param}</strong> </span> <br/> <br/>
               <span>{serverResponse} </span>
             </div>
           :

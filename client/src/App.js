@@ -26,7 +26,7 @@ function App() {
                 <MainContent />
                 <Routes>
                     <Route path="/about" element={ <About /> } />
-                    <Route path="/" element={ <WriteEngpor /> } />
+                    <Route path="/write" element={ <WriteEngpor /> } />
                     <Route path="/results/engtur/:param" element={ <ResultsEngtur /> } /> 
                     <Route path="/results/tureng/:param" element={ <ResultsTureng /> } /> 
                     <Route path="/results/engpor/:param" element={ <ResultsEngpor /> } /> 

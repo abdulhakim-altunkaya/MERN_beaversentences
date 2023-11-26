@@ -44,8 +44,8 @@
 /* Responsive: Stacking the navbar for smaller screens if needed */
 @media (max-width: 768px) {
   .nav-list {
-    flex-direction: column;
-    margin-top: 10px;
+    flex-direction: row;
+    margin-top: 8px;
   }
 
   .nav-item {
@@ -60,5 +60,12 @@
   .nav-link {
     text-align: center; /* Center align text for stacked layout */
     padding: 10px 20px; /* Larger touch targets for mobile users */
+  }
+  .nav-homepage, .nav-about {
+    margin: 10px;
+    padding: 10px;
+  }
+  .nav-homepage {
+    font-size: 28px;
   }
 }

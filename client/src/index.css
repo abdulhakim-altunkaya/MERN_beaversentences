@@ -1,61 +1,129 @@
-* {    
-  margin: 0;
-  padding: 0;
-}
-body{
-  background-color: lightcoral;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
-}
-.mainDiv {
-  width: 70vw;
-  margin: auto;
-  background-color: white;
-  min-height: 100vh;
-}
+  * {    
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    background-color: lightcoral;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
-.logoDiv {
-  margin-top: 0;
-  width: 500px;
-  padding-bottom: 15px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-}
-.logo-image {
-  width: 300px;
-  margin: auto;
-  cursor: pointer;
-}
+  }
+  .mainDiv {
+    width: 70vw;
+    margin: auto;
+    background-color: white;
+    min-height: 100vh;
+  }
+
+  .logoDiv {
+    margin-top: 0;
+    width: 500px;
+    padding-bottom: 15px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .logo-image {
+    width: 300px;
+    margin: auto;
+    cursor: pointer;
+  }
 
 
-.resultContainer1 {
-}
-.resultContainer2 {
-  display: flex;
-  flex-direction: column;
-}
-.resultContainer3 {
-  padding: 4px;
-  margin: 3px;
-  display: flex;
-  flex-direction: row;
-  border-bottom: 2px solid #ddd;
-}
-.resultContainer3 span {
-  width: 50% !important;
-}
-.resultMessageContainer {
-  margin-top: 10px;
-  background-color: #ffdddd; /* Light reddish background color */
-  color: #000000; /* Black text color */
-  padding: 20px; /* Add padding for better readability */
-  border-top: 1px dashed #000000; /* Dashed top border with black color */
-  border-bottom: 1px dashed #000000; 
-  font-size: 16px;
-}
+  .resultContainer1 {
+  }
+  .resultContainer2 {
+    display: flex;
+    flex-direction: column;
+  }
+  .resultContainer3 {
+    padding: 4px;
+    margin: 3px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid #ddd;
+  }
+  .resultContainer3 span {
+    width: 50% !important;
+    padding: 8px;
+  }
+  .resultMessageContainer {
+    margin-top: 10px;
+    background-color: #ffdddd; /* Light reddish background color */
+    color: #000000; /* Black text color */
+    padding: 20px; /* Add padding for better readability */
+    border-top: 1px dashed #000000; /* Dashed top border with black color */
+    border-bottom: 1px dashed #000000; 
+    font-size: 16px;
+  }
 
-.negativeResultSpan {
-  margin-top: 15px;
-  margin-left: 15px;
+  .negativeResultSpan {
+    margin-top: 15px;
+    margin-left: 15px;
+  }
+
+
+/* Media query for screens with a maximum width of 767px (typical for mobile devices) */
+@media only screen and (max-width: 767px) {
+  * {    
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    background-color: lightseagreen;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  .mainDiv {
+    width: 94%;
+    margin: auto;
+    background-color: white;
+    min-height: 100vh;
+  }
+
+  .logoDiv {
+    margin-top: 0;
+    width: 140px;
+    padding-bottom: 8px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .logo-image {
+    width: 140px;
+    margin: auto;
+    cursor: pointer;
+  }
+
+
+  .resultContainer1 {
+  }
+  .resultContainer2 {
+    display: flex;
+    flex-direction: column;
+  }
+  .resultContainer3 {
+    padding: 4px;
+    margin: 3px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid #ddd;
+  }
+  .resultContainer3 span {
+    width: 50% !important;
+    padding: 8px;
+  }
+  .resultMessageContainer {
+    margin-top: 10px;
+    background-color: #ffdddd; /* Light reddish background color */
+    color: #000000; /* Black text color */
+    padding: 14px; /* Add padding for better readability */
+    border-top: 1px dashed #000000; /* Dashed top border with black color */
+    border-bottom: 1px dashed #000000; 
+    font-size: 14px;
+  }
+
+  .negativeResultSpan {
+    margin-top: 8px;
+    margin-left: 8px;
+  }
 }

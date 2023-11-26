@@ -58,3 +58,16 @@
   width: 20px; /* Adjust size as needed */
   height: auto;
 }
+
+/* Media query for screens with a maximum width of 767px (typical for mobile devices) */
+@media only screen and (max-width: 767px) {
+  .select-container {
+    width: 220px;
+  }
+  .select-display {
+    padding: 5px;
+  }
+  .option-each {
+    padding: 3px;
+  }
+}

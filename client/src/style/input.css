@@ -24,3 +24,21 @@
   background: none;
   cursor: pointer;
 }
+/* Media query for screens with a maximum width of 767px (typical for mobile devices) */
+@media only screen and (max-width: 767px) {
+  .inputMainDiv {
+    margin-top: 8px;
+  }
+  .inputField {
+    padding: 10px;
+    width: 300px;
+    height: 40%;
+    box-shadow: 3px 8px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+  }
+  
+  .searchButton {
+    margin-left: -30px;
+    font-size: 16px;
+  }
+}

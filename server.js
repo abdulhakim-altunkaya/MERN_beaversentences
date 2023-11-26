@@ -310,7 +310,7 @@ app.post("/api/gereng/search", limiter, async (req, res) => {
 });
 app.post("/api/engesp/search", limiter, async (req, res) => {
   try {
-    let searchword = req.query.wordXXXXXXXXXXXXXXXXXXXXXXXXX;
+    let searchword = req.query.word;
     let languagePair = req.query.pair;
     if (searchword.length < 4 ) {
       return res.status(400).json({ errorMessage: "Server error: your search word is too short" });
@@ -409,7 +409,6 @@ app.listen(PORT, () => {
 
 /*
 Remove all test compnents and server routes 
-Extensive error management. Example is in chatgpt
 Limit the number of results, and put extra results in a separate array for extra display. 
   user will need to click again for extra display of additional results. Extra results will either come 
   down under existing results or will replace them.
@@ -418,6 +417,8 @@ Domain register with Render.com
 pay Render.com for hosting website
 Add files to mongodb
 NEWCOM598
+mobile screens css
+mongodb scaling
 To make it more secure, some names can be moved into dotenv file
 */
 

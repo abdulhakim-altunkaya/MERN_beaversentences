@@ -1,4 +1,4 @@
-/* About.css */
+
 .about {
     max-width: 800px;
     margin: 2rem auto;
@@ -57,6 +57,22 @@
     border-top: 1px solid #eaeaea;
     text-align: center;
   }
-  
-  /* Add additional styling based on your branding and design preferences */
+
+/* Media query for screens with a maximum width of 767px (typical for mobile devices) */
+@media only screen and (max-width: 767px) {
+  .about {
+    max-width: 100%;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: justify;
+  }
+  .about p, .about footer {
+    color: #666;
+    line-height: 1.3;
+  }
+}
   
