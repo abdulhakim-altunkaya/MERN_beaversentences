@@ -4,7 +4,7 @@
     padding: 0;
   }
   body{
-    background-color: lightcoral;
+    background-color: lightseagreen;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
   }
@@ -111,7 +111,7 @@
   }
   .resultContainer3 span {
     width: 50% !important;
-    padding: 8px;
+    padding:3px;
   }
   .resultMessageContainer {
     margin-top: 6px;

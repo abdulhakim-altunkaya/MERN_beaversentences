@@ -417,7 +417,6 @@ Domain register with Render.com
 pay Render.com for hosting website
 Add files to mongodb
 NEWCOM598
-mobile screens css
 mongodb scaling
 To make it more secure, some names can be moved into dotenv file
 */
