@@ -20,6 +20,9 @@ function WriteEngpor() {
     const [sentenceEng5, setSentenceEng5] = useState('');
     const [sentenceTur3, setSentenceTur3] = useState('');
 
+    const [sentencePor2, setSentencePor2] = useState('');
+    const [sentenceTur4, setSentenceTur4] = useState('');
+
 
     const saveEngpor = async () => {
         try {
@@ -68,6 +71,13 @@ function WriteEngpor() {
         setSentenceEng5('');
         setSentenceTur3('');
     };
+    const savePortur = async () => { 
+        const response = await axios.post('http://localhost:5000/api/portur', { SentencePor: sentencePor2, SentenceTur: sentenceTur4});
+        console.log(response.data);
+        alert("Data saved to the MongoDB");
+        setSentencePor2('');
+        setSentenceTur4('');
+    };
     
     return (
         <div> 
@@ -84,6 +94,21 @@ function WriteEngpor() {
                 placeholder="Enter Portuguese sentence..."
             />
             <button onClick={saveEngpor}>Save ENGPOR</button>
+            <br/><br/>
+
+            <input 
+                type="text" 
+                value={sentencePor2}
+                onChange={(e) => setSentencePor2(e.target.value)}
+                placeholder="Enter Portuguese sentence..."
+            />
+            <input 
+                type="text" 
+                value={sentenceTur4}
+                onChange={(e) => setSentenceTur4(e.target.value)}
+                placeholder="Enter Turkish sentence..."
+            />
+            <button onClick={savePortur}>Save PORTUR</button>
             <br/><br/>
 
             <input 
