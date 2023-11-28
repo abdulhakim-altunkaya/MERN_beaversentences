@@ -15,6 +15,8 @@ import ResultsGertur from "./components/ResultsGertur";
 import ResultsGereng from "./components/ResultsGereng";
 import ResultsEngesp from "./components/ResultsEngesp";
 import ResultsEspeng from "./components/ResultsEspeng";
+import ResultsPortur from "./components/ResultsPortur";
+import ResultsTurpor from "./components/ResultsTurpor";
 import ResultsTechET from "./components/ResultsTechET";
 import ResultsTechTE from "./components/ResultsTechTE";
 
@@ -39,6 +41,9 @@ function App() {
 
                     <Route path="/results/espeng/:param" element={ <ResultsEspeng /> } /> 
                     <Route path="/results/engesp/:param" element={ <ResultsEngesp /> } /> 
+                    <Route path="/results/portur/:param" element={ <ResultsPortur /> } /> 
+                    <Route path="/results/turpor/:param" element={ <ResultsTurpor /> } /> 
+
                     <Route path="/results/techet/:param" element={ <ResultsTechET /> } /> 
                     <Route path="/results/techte/:param" element={ <ResultsTechTE /> } /> 
                 </Routes>

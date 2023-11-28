@@ -39,7 +39,7 @@ function Dropdown() {
   }, [dropdownRef]);
 
   const handleSelect = (valueFlag1, valueFlag2, valuePair, valuePairNumber) => {
-    if (valuePairNumber < 1 || valuePairNumber > 12) {
+    if (valuePairNumber < 1 || valuePairNumber > 14) {
       alert("Select language pair or refresh the page.");
       return;
     }
@@ -105,42 +105,52 @@ function Dropdown() {
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             Portuguese-English
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagUSA, flagGER, 'English-German', 5)}>
+          <div className="option-each" onClick={() => handleSelect(flagPOR, flagTUR, 'Portuguese-Turkish', 5)}>
+            <img src={flagPOR} alt="Portugese Flag" className="option-icon" /> 
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
+            Portuguese-Turkish
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagTUR, flagPOR, 'Turkish-Portuguese', 6)}>
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
+            <img src={flagPOR} alt="Portugese Flag" className="option-icon" /> 
+            Turkish-Portuguese
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagUSA, flagGER, 'English-German', 7)}>
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             <img src={flagGER} alt="Germany Flag" className="option-icon" /> 
             English-German
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagGER, flagUSA, 'German-English', 6)}>
+          <div className="option-each" onClick={() => handleSelect(flagGER, flagUSA, 'German-English', 8)}>
             <img src={flagGER} alt="Germany Flag" className="option-icon" /> 
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             German-English
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagGER, flagTUR, 'German-Turkish', 7)}>
+          <div className="option-each" onClick={() => handleSelect(flagGER, flagTUR, 'German-Turkish', 9)}>
             <img src={flagGER} alt="German Flag" className="option-icon" /> 
             <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             German-Turkish
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagTUR, flagGER, 'Turkish-German', 8)}>
+          <div className="option-each" onClick={() => handleSelect(flagTUR, flagGER, 'Turkish-German', 10)}>
             <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             <img src={flagGER} alt="Germany Flag" className="option-icon" /> 
             Turkish-German
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagUSA, flagESP, 'English-Spanish', 9)}>
+          <div className="option-each" onClick={() => handleSelect(flagUSA, flagESP, 'English-Spanish', 11)}>
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             <img src={flagESP} alt="Spain Flag" className="option-icon" /> 
             English-Spanish
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagESP, flagUSA, 'Spanish-English', 10)}>
+          <div className="option-each" onClick={() => handleSelect(flagESP, flagUSA, 'Spanish-English', 12)}>
             <img src={flagESP} alt="Spain Flag" className="option-icon" /> 
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             Spanish-English
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagUSA, flagTUR, "English-Turkish", 11)}>
+          <div className="option-each" onClick={() => handleSelect(flagUSA, flagTUR, "English-Turkish", 13)}>
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             English-Turkish (Technical)
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagTUR, flagUSA, 'Turkish-English', 12)}>
+          <div className="option-each" onClick={() => handleSelect(flagTUR, flagUSA, 'Turkish-English', 14)}>
             <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             Turkish-English (Technical)

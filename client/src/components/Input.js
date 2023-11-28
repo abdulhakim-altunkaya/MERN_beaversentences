@@ -25,7 +25,7 @@ function Input() {
 
   const handleSearch = () => {
     //input checks
-    if(pairId < 1 || pairId > 12) {
+    if(pairId < 1 || pairId > 14) {
       alert("You need to select a language pair");
       return;
     } 
@@ -51,20 +51,24 @@ function Input() {
     } else if(pairId == 4) {
       navigate(`/results/poreng/${inputValue}`);
     } else if(pairId == 5) {
-      navigate(`/results/engger/${inputValue}`);
+      navigate(`/results/portur/${inputValue}`);
     } else if(pairId == 6) {
-      navigate(`/results/gereng/${inputValue}`);
+      navigate(`/results/turpor/${inputValue}`);
     } else if(pairId == 7) {
-      navigate(`/results/gertur/${inputValue}`);
+      navigate(`/results/engger/${inputValue}`);
     } else if(pairId == 8) {
-      navigate(`/results/turger/${inputValue}`);
+      navigate(`/results/gereng/${inputValue}`);
     } else if(pairId == 9) {
-      navigate(`/results/engesp/${inputValue}`);
+      navigate(`/results/gertur/${inputValue}`);
     } else if(pairId == 10) {
-      navigate(`/results/espeng/${inputValue}`);
+      navigate(`/results/turger/${inputValue}`);
     } else if(pairId == 11) {
-      navigate(`/results/techet/${inputValue}`);
+      navigate(`/results/engesp/${inputValue}`);
     } else if(pairId == 12) {
+      navigate(`/results/espeng/${inputValue}`);
+    } else if(pairId == 13) {
+      navigate(`/results/techet/${inputValue}`);
+    } else if(pairId == 14) {
       navigate(`/results/techte/${inputValue}`);
     }
     setSearchSymbol(false);
