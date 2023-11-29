@@ -85,15 +85,36 @@ function Dropdown() {
       </div>
       {isOpen && (
         <div className="options-container">
-          <div className="option-each" onClick={() => handleSelect(flagUSA, flagTUR, "English-Turkish", 1)}>
+          <div className="option-each groupPair1" onClick={() => handleSelect(flagUSA, flagTUR, "English-Turkish", 1)}>
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             English-Turkish
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagTUR, flagUSA, 'Turkish-English', 2)}>
+          <div className="option-each groupPair1" onClick={() => handleSelect(flagTUR, flagUSA, 'Turkish-English', 2)}>
             <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             Turkish-English
+          </div>
+          <div className="option-each groupPair1" onClick={() => handleSelect(flagUSA, flagTUR, "English-Turkish", 13)}>
+            <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
+            English-Turkish (Technical)
+          </div>
+          <div className="option-each groupPair1" onClick={() => handleSelect(flagTUR, flagUSA, 'Turkish-English', 14)}>
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
+            <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
+            Turkish-English (Technical)
+          </div>
+
+          <div className="option-each" onClick={() => handleSelect(flagPOR, flagTUR, 'Portuguese-Turkish', 5)}>
+            <img src={flagPOR} alt="Portugese Flag" className="option-icon" /> 
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
+            Portuguese-Turkish
+          </div>
+          <div className="option-each" onClick={() => handleSelect(flagTUR, flagPOR, 'Turkish-Portuguese', 6)}>
+            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
+            <img src={flagPOR} alt="Portugese Flag" className="option-icon" /> 
+            Turkish-Portuguese
           </div>
           <div className="option-each" onClick={() => handleSelect(flagUSA, flagPOR, 'English-Portuguese', 3)}>
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
@@ -105,36 +126,28 @@ function Dropdown() {
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             Portuguese-English
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagPOR, flagTUR, 'Portuguese-Turkish', 5)}>
-            <img src={flagPOR} alt="Portugese Flag" className="option-icon" /> 
-            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
-            Portuguese-Turkish
-          </div>
-          <div className="option-each" onClick={() => handleSelect(flagTUR, flagPOR, 'Turkish-Portuguese', 6)}>
-            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
-            <img src={flagPOR} alt="Portugese Flag" className="option-icon" /> 
-            Turkish-Portuguese
-          </div>
-          <div className="option-each" onClick={() => handleSelect(flagUSA, flagGER, 'English-German', 7)}>
+
+          <div className="option-each groupPair1" onClick={() => handleSelect(flagUSA, flagGER, 'English-German', 7)}>
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             <img src={flagGER} alt="Germany Flag" className="option-icon" /> 
             English-German
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagGER, flagUSA, 'German-English', 8)}>
+          <div className="option-each groupPair1" onClick={() => handleSelect(flagGER, flagUSA, 'German-English', 8)}>
             <img src={flagGER} alt="Germany Flag" className="option-icon" /> 
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             German-English
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagGER, flagTUR, 'German-Turkish', 9)}>
+          <div className="option-each groupPair1" onClick={() => handleSelect(flagGER, flagTUR, 'German-Turkish', 9)}>
             <img src={flagGER} alt="German Flag" className="option-icon" /> 
             <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             German-Turkish
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagTUR, flagGER, 'Turkish-German', 10)}>
+          <div className="option-each groupPair1" onClick={() => handleSelect(flagTUR, flagGER, 'Turkish-German', 10)}>
             <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
             <img src={flagGER} alt="Germany Flag" className="option-icon" /> 
             Turkish-German
           </div>
+
           <div className="option-each" onClick={() => handleSelect(flagUSA, flagESP, 'English-Spanish', 11)}>
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             <img src={flagESP} alt="Spain Flag" className="option-icon" /> 
@@ -145,16 +158,7 @@ function Dropdown() {
             <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
             Spanish-English
           </div>
-          <div className="option-each" onClick={() => handleSelect(flagUSA, flagTUR, "English-Turkish", 13)}>
-            <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
-            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
-            English-Turkish (Technical)
-          </div>
-          <div className="option-each" onClick={() => handleSelect(flagTUR, flagUSA, 'Turkish-English', 14)}>
-            <img src={flagTUR} alt="Turkey Flag" className="option-icon" /> 
-            <img src={flagUSA} alt="USA Flag" className="option-icon" /> 
-            Turkish-English (Technical)
-          </div>
+
           {/* More options... */}
         </div>
       )}

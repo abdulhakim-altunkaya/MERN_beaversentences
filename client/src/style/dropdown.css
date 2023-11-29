@@ -43,7 +43,7 @@
 }
 
 .option-each {
-  padding: 6px;
+  padding: 4px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -57,6 +57,10 @@
   margin-right: 10px;
   width: 20px; /* Adjust size as needed */
   height: auto;
+}
+
+.groupPair1 {
+  background-color: #c9c9c9;
 }
 
 /* Media query for screens with a maximum width of 767px (typical for mobile devices) */
