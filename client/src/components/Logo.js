@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "./flags/logo4.png";
+import logo from "./flags/logo5.png";
 import {useNavigate} from "react-router-dom";
 
 function Logo() {

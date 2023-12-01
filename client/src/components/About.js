@@ -4,13 +4,13 @@ import "../style/about.css";
 const About = () => {
   return (
     <div className="about">
-      <h1>Beaver Sentences</h1>
+      <h1>Frasio Sentences</h1>
       <h3>Abdulhakim Altunkaya, 2023</h3>
-      <p>Welcome to Beaver Sentences, your go-to sentence dictionary platform for finding translated sentences tailored to your specific word searches. Our goal is to enhance your translation experience by providing you with example sentences in your chosen language pair.</p>
+      <p>Welcome to Frasio Sentences, your go-to sentence dictionary platform for finding translated sentences tailored to your specific word searches. Our goal is to enhance your translation experience by providing you with example sentences in your chosen language pair.</p>
       
       <h2>Features</h2>
       <ul>
-        <li><strong>Translation Assistance:</strong> Beaver Sentences aims to assist you in finding contextually relevant translations.</li>
+        <li><strong>Translation Assistance:</strong> Frasio Sentences aims to assist you in finding contextually relevant translations.</li>
         <li><strong>Language Support:</strong> Currently, we support English, Turkish, German, Spanish and Portuguese languages, with plans to expand to additional languages in the near future.</li>
         <li><strong>Specialized Content:</strong> We offer sentences from various specialized domains such as medicine, engineering, law, politics, and more.</li>
       </ul>
