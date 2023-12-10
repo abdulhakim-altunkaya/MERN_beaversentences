@@ -135,6 +135,85 @@ app.post("/api/techet", async (req, res) => {
 
 
 
+
+
+
+app.post("/api/delete/portur", limiter, async (req, res) => {
+  try {
+    await ModelPortur.deleteMany({});
+    res.status(202).json({message: "Server: Collection deletion successful"})
+  } catch (error) {
+    console.log("Ошибка сервера при сохранении данных", error.message);
+    res.status(500).json({errorMessage: "Server error: collection deletion failed"});
+  }
+});
+app.post("/api/delete/engtur", limiter, async (req, res) => {
+  try {
+    await ModelEngtur.deleteMany({});
+    res.status(202).json({message: "Server: Collection deletion successful"})
+  } catch (error) {
+    console.log("Ошибка сервера при сохранении данных", error.message);
+    res.status(500).json({errorMessage: "Server error: collection deletion failed"});
+  }
+});
+app.post("/api/delete/engger", limiter, async (req, res) => {
+  try {
+    await ModelEngger.deleteMany({});
+    res.status(202).json({message: "Server: Collection deletion successful"})
+  } catch (error) {
+    console.log("Ошибка сервера при сохранении данных", error.message);
+    res.status(500).json({errorMessage: "Server error: collection deletion failed"});
+  }
+});
+app.post("/api/delete/engesp", limiter, async (req, res) => {
+  try {
+    await ModelEngesp.deleteMany({});
+    res.status(202).json({message: "Server: Collection deletion successful"})
+  } catch (error) {
+    console.log("Ошибка сервера при сохранении данных", error.message);
+    res.status(500).json({errorMessage: "Server error: collection deletion failed"});
+  }
+});
+app.post("/api/delete/engpor", limiter, async (req, res) => {
+  try {
+    await ModelEngpor.deleteMany({});
+    res.status(202).json({message: "Server: Collection deletion successful"})
+  } catch (error) {
+    console.log("Ошибка сервера при сохранении данных", error.message);
+    res.status(500).json({errorMessage: "Server error: collection deletion failed"});
+  }
+});
+app.post("/api/delete/gertur", limiter, async (req, res) => {
+  try {
+    await ModelGertur.deleteMany({});
+    res.status(202).json({message: "Server: Collection deletion successful"})
+  } catch (error) {
+    console.log("Ошибка сервера при сохранении данных", error.message);
+    res.status(500).json({errorMessage: "Server error: collection deletion failed"});
+  }
+});
+app.post("/api/delete/techet", limiter, async (req, res) => {
+  try {
+    await ModelEngturTech.deleteMany({});
+    res.status(202).json({message: "Server: Collection deletion successful"})
+  } catch (error) {
+    console.log("Ошибка сервера при сохранении данных", error.message);
+    res.status(500).json({errorMessage: "Server error: collection deletion failed"});
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.post("/api/engpor/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;

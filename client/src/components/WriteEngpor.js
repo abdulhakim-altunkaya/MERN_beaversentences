@@ -78,6 +78,40 @@ function WriteEngpor() {
         setSentencePor2('');
         setSentenceTur4('');
     };
+
+    const deleteCollection = async (num) => {
+        if (num === 1) {
+            const response = await axios.post("http://localhost:5000/api/delete/engpor");
+            console.log(response.data);
+            alert("collection deleted");
+        } else if(num === 2) {
+            const response = await axios.post("http://localhost:5000/api/delete/portur");
+            console.log(response.data);
+            alert("collection deleted");
+        } else if(num === 3) {
+            const response = await axios.post("http://localhost:5000/api/delete/engger");
+            console.log(response.data);
+            alert("collection deleted");
+        } else if(num === 4) {
+            const response = await axios.post("http://localhost:5000/api/delete/engesp");
+            console.log(response.data);
+            alert("collection deleted");
+        } else if(num === 5) {
+            const response = await axios.post("http://localhost:5000/api/delete/engtur");
+            console.log(response.data);
+            alert("collection deleted");
+        } else if(num === 6) {
+            const response = await axios.post("http://localhost:5000/api/delete/gertur");
+            console.log(response.data);
+            alert("collection deleted");
+        } else if(num === 7) {
+            const response = await axios.post("http://localhost:5000/api/delete/techet");
+            console.log(response.data);
+            alert("collection deleted");
+        } else {
+            alert("Website: Unexpected event while trying to delete collection. You can restart website to fix error")
+        }
+    }
     
     return (
         <div> 
@@ -93,7 +127,8 @@ function WriteEngpor() {
                 onChange={(e) => setSentencePor(e.target.value)}
                 placeholder="Enter Portuguese sentence..."
             />
-            <button onClick={saveEngpor}>Save ENGPOR</button>
+            <button onClick={saveEngpor}>Save ENGPOR</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onClick={() => deleteCollection(1)}> DELETE COLLECTION </button>
             <br/><br/>
 
             <input 
@@ -108,7 +143,8 @@ function WriteEngpor() {
                 onChange={(e) => setSentenceTur4(e.target.value)}
                 placeholder="Enter Turkish sentence..."
             />
-            <button onClick={savePortur}>Save PORTUR</button>
+            <button onClick={savePortur}>Save PORTUR</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onClick={() => deleteCollection(2)}> DELETE COLLECTION </button>
             <br/><br/>
 
             <input 
@@ -123,7 +159,8 @@ function WriteEngpor() {
                 onChange={(e) => setSentenceGer(e.target.value)}
                 placeholder="Enter German sentence..."
             />
-            <button onClick={saveEngger}>Save ENGGER</button>
+            <button onClick={saveEngger}>Save ENGGER</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onClick={() => deleteCollection(3)}> DELETE COLLECTION </button>
             <br/><br/>
 
             <input 
@@ -138,7 +175,8 @@ function WriteEngpor() {
                 onChange={(e) => setSentenceEsp(e.target.value)}
                 placeholder="Enter Spanish sentence..."
             />
-            <button onClick={saveEngesp}>Save ENGESP</button>
+            <button onClick={saveEngesp}>Save ENGESP</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onClick={() => deleteCollection(4)}> DELETE COLLECTION </button>
             <br/><br/>
 
             <input 
@@ -153,7 +191,8 @@ function WriteEngpor() {
                 onChange={(e) => setSentenceTur(e.target.value)}
                 placeholder="Enter Turkish sentence..."
             />
-            <button onClick={saveEngtur}>Save ENGTUR</button>
+            <button onClick={saveEngtur}>Save ENGTUR</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onClick={() => deleteCollection(5)}> DELETE COLLECTION </button>
             <br/><br/>
 
             <input 
@@ -168,7 +207,8 @@ function WriteEngpor() {
                 onChange={(e) => setSentenceTur2(e.target.value)}
                 placeholder="Enter Turkish sentence..."
             />
-            <button onClick={saveGertur}>Save GERTUR</button>
+            <button onClick={saveGertur}>Save GERTUR</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onClick={() => deleteCollection(6)}> DELETE COLLECTION </button>
             <br/><br/>
 
 
@@ -184,7 +224,8 @@ function WriteEngpor() {
                 onChange={(e) => setSentenceTur3(e.target.value)}
                 placeholder="Enter Turkish sentence..."
             />
-            <button onClick={saveTechet}>Save TECH</button>
+            <button onClick={saveTechet}>Save TECH</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onClick={() => deleteCollection(7)}> DELETE COLLECTION </button>
             <br/><br/>
         </div>
     );
