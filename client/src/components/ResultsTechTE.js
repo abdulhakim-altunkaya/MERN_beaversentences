@@ -15,6 +15,10 @@ function ResultsTechTE() {
 
   let [serverResponse, setServerResponse] = useState("");
   let [serverArray, setServerArray] = useState([]);
+  let [subServerArray1, setSubServerArray1] = useState([]);
+  let [subServerArray2, setSubServerArray2] = useState([]);
+  let [displaySubServerArray2, setDisplaySubServerArray2] = useState(false);
+
 
   const markRef = useRef(null);//we are using mark.js and useRef to highlight the searched word in results
 
@@ -33,6 +37,12 @@ function ResultsTechTE() {
         const response = await axios.post(url);
         const serverData = response.data;
         setServerArray(serverData.serverResults);
+        if(serverArray.length > 20) {
+          setSubServerArray1(serverArray.slice(0, 20));
+          setSubServerArray2(serverArray.slice(20, 50));
+        } else {
+          return;
+        }
         setServerResponse(serverData.serverMessage);
         setTimeout(() => {
           highlightWord();
@@ -58,6 +68,10 @@ function ResultsTechTE() {
     })
 
   }, [param]);
+
+  const showMore = () => {
+    setDisplaySubServerArray2(!displaySubServerArray2);
+  }
  
 
   return (
@@ -73,13 +87,52 @@ function ResultsTechTE() {
             <div className='resultContainer2'>
               <div className='resultMessageContainer' >Search results for <strong>{param}</strong></div>
               <div ref={markRef}>
-                {serverArray.map((item, index) => (
-                  <div key={item._id} className='resultContainer3'>
-                    <span>{item.SentenceTur}</span>
-                    <span>{item.SentenceEng}</span>
-                  </div>
-                ))
+                {
+                  serverArray.length > 20 ?
+                  
+                    <>
+                      {subServerArray1.map((item, index) => (
+                        <div key={item._id} className='resultContainer3'>
+                          <span>{item.SentenceTur}</span>
+                          <span>{item.SentenceEng}</span>
+                        </div>
+                      ))
+                      }  
+
+                      <button  onClick={showMore}> SHOW MORE </button> 
+                      
+                      {
+                        displaySubServerArray2 === false ?
+                          <></>
+                        :
+                          <>
+                            {subServerArray2.map((item, index) => (
+                              <div key={item._id} className='resultContainer3'>
+                                <span>{item.SentenceTur}</span>
+                                <span>{item.SentenceEng}</span>
+                              </div>
+                            ))
+                            }     
+                          </>
+                      }
+ 
+                    </>
+
+
+                  :
+                    <>
+                      {serverArray.map((item, index) => (
+                        <div key={item._id} className='resultContainer3'>
+                          <span>{item.SentenceTur}</span>
+                          <span>{item.SentenceEng}</span>
+                        </div>
+                      ))
+                      }
+                    </>
+
+
                 }
+
               </div>
             </div>
           }
