@@ -527,10 +527,11 @@ app.post("/api/techte/search", limiter, async (req, res) => {
     const sentences = await ModelEngturTech.find({
       SentenceTur: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 20);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);

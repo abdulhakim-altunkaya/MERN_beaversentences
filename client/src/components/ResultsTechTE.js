@@ -15,7 +15,6 @@ function ResultsTechTE() {
 
   let [serverResponse, setServerResponse] = useState("");
   let [serverArray, setServerArray] = useState([]);
-  let [displayArray, setDisplayArray] = useState([]);
 
   const markRef = useRef(null);//we are using mark.js and useRef to highlight the searched word in results
 
@@ -34,13 +33,6 @@ function ResultsTechTE() {
         const response = await axios.post(url);
         const serverData = response.data;
         setServerArray(serverData.serverResults);
-
-        if(serverArray.length > 20) {
-          let subServerArray = serverArray.slice(0, 20);
-          setDisplayArray(subServerArray);
-        } else {
-          setDisplayArray(serverArray);
-        }
         setServerResponse(serverData.serverMessage);
         setTimeout(() => {
           highlightWord();
@@ -72,7 +64,7 @@ function ResultsTechTE() {
     <div>
       <div>
         <div className='resultContainer1'>
-          {displayArray.length < 1 ?
+          {serverArray.length < 1 ?
             <div className='resultMessageContainer'>
               <span>Unfortunately no results for:  <strong> {param}</strong> </span> <br/> <br/>
               <span>{serverResponse} </span>
@@ -81,7 +73,7 @@ function ResultsTechTE() {
             <div className='resultContainer2'>
               <div className='resultMessageContainer' >Search results for <strong>{param}</strong></div>
               <div ref={markRef}>
-                {displayArray.map((item, index) => (
+                {serverArray.map((item, index) => (
                   <div key={item._id} className='resultContainer3'>
                     <span>{item.SentenceTur}</span>
                     <span>{item.SentenceEng}</span>
