@@ -34,7 +34,8 @@ function ResultsTechTE() {
         const serverData = response.data;
         setServerArray(serverData.serverResults);
         if(serverArray.length > 20) {
-          setServerArray(serverArray.slice(0, 20));
+          let subServerArray = serverArray.slice(0, 20);
+          setServerArray(subServerArray);
         } 
         setServerResponse(serverData.serverMessage);
         setTimeout(() => {
