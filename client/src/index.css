@@ -63,7 +63,7 @@
   }
 
   .endingIconDiv {
-    padding: 20px;
+    padding: 12px;
     align-items: center;
     text-align: center;
   }
@@ -131,5 +131,10 @@
   .negativeResultSpan {
     margin-top: 8px;
     margin-left: 8px;
+  }
+  .endingIconDiv {
+    padding: 8px;
+    align-items: center;
+    text-align: center;
   }
 }

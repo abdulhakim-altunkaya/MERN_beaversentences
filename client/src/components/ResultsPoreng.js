@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Mark from "mark.js";
 import { useSelector } from 'react-redux';
+import end2 from "./flags/end2.png";
 
 function ResultsPoreng() {
   //we are getting pairId to tell backend which language pair to conduct search.
@@ -79,6 +80,9 @@ function ResultsPoreng() {
                   </div>
                 ))
                 }
+              </div>
+              <div className='endingIconDiv'>
+                <img src={end2} className='ending-icon' alt="ending of the search results icon" /> 
               </div>
             </div>
           }
