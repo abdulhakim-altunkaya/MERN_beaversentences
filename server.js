@@ -218,7 +218,7 @@ app.post("/api/engpor/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -227,10 +227,11 @@ app.post("/api/engpor/search", limiter, async (req, res) => {
     const sentences = await ModelEngpor.find({
       SentenceEng: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -241,7 +242,7 @@ app.post("/api/poreng/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -250,10 +251,11 @@ app.post("/api/poreng/search", limiter, async (req, res) => {
     const sentences = await ModelEngpor.find({
       SentencePor: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -264,7 +266,7 @@ app.post("/api/engtur/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -273,10 +275,11 @@ app.post("/api/engtur/search", limiter, async (req, res) => {
     const sentences = await ModelEngtur.find({
       SentenceEng: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -287,7 +290,7 @@ app.post("/api/tureng/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -296,10 +299,11 @@ app.post("/api/tureng/search", limiter, async (req, res) => {
     const sentences = await ModelEngtur.find({
       SentenceTur: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -311,7 +315,7 @@ app.post("/api/turger/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -320,10 +324,11 @@ app.post("/api/turger/search", limiter, async (req, res) => {
     const sentences = await ModelGertur.find({
       SentenceTur: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -334,7 +339,7 @@ app.post("/api/gertur/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -343,10 +348,11 @@ app.post("/api/gertur/search", limiter, async (req, res) => {
     const sentences = await ModelGertur.find({
       SentenceGer: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -357,7 +363,7 @@ app.post("/api/engger/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -366,10 +372,11 @@ app.post("/api/engger/search", limiter, async (req, res) => {
     const sentences = await ModelEngger.find({
       SentenceEng: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -380,7 +387,7 @@ app.post("/api/gereng/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -389,10 +396,11 @@ app.post("/api/gereng/search", limiter, async (req, res) => {
     const sentences = await ModelEngger.find({
       SentenceGer: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -403,7 +411,7 @@ app.post("/api/engesp/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       return res.status(400).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -412,10 +420,11 @@ app.post("/api/engesp/search", limiter, async (req, res) => {
     const sentences = await ModelEngesp.find({ 
       SentenceEng: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -426,7 +435,7 @@ app.post("/api/espeng/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -435,10 +444,11 @@ app.post("/api/espeng/search", limiter, async (req, res) => {
     const sentences = await ModelEngesp.find({
       SentenceEsp: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -449,7 +459,7 @@ app.post("/api/portur/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -458,10 +468,11 @@ app.post("/api/portur/search", limiter, async (req, res) => {
     const sentences = await ModelPortur.find({
       SentencePor: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -472,7 +483,7 @@ app.post("/api/turpor/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -481,10 +492,11 @@ app.post("/api/turpor/search", limiter, async (req, res) => {
     const sentences = await ModelPortur.find({
       SentenceTur: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -495,7 +507,7 @@ app.post("/api/techet/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -504,10 +516,11 @@ app.post("/api/techet/search", limiter, async (req, res) => {
     const sentences = await ModelEngturTech.find({
       SentenceEng: { $regex: new RegExp(searchword, "iu")},
     });
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",
-      serverResults: sentences, 
+      serverResults: resultsArray, 
     });
   } catch (error) {
     console.log(error.message);
@@ -518,7 +531,7 @@ app.post("/api/techte/search", limiter, async (req, res) => {
   try {
     let searchword = req.query.word;
     let languagePair = req.query.pair;
-    if (searchword.length < 4 ) {
+    if (searchword.length < 3 ) {
       res.status(500).json({ errorMessage: "Server error: your search word is too short" });
     }
     if (languagePair < 0 || languagePair > 14) {
@@ -527,7 +540,7 @@ app.post("/api/techte/search", limiter, async (req, res) => {
     const sentences = await ModelEngturTech.find({
       SentenceTur: { $regex: new RegExp(searchword, "iu")},
     });
-    let resultsArray = sentences.slice(0, 20);
+    let resultsArray = sentences.slice(0, 30);
     
     res.status(200).json({
       serverMessage: "Server message: word successfully searched",

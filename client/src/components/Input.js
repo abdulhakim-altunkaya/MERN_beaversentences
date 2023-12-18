@@ -32,7 +32,7 @@ function Input() {
     if(inputValue == "") {
       alert("Please enter a word");
       return;
-    } else if(inputValue.length < 4) {
+    } else if(inputValue.length < 3) {
       alert("Your word is too short, please enter a longer word");
       return;
     }  else if(inputValue.length > 30) {
