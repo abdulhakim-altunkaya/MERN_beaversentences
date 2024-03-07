@@ -9,6 +9,7 @@ const ModelGertur = require("./Models/ModelGertur");
 const ModelEngesp = require("./Models/ModelEngesp");
 const ModelPortur = require("./Models/ModelPortur");
 const ModelEngturTech = require("./Models/ModelEngturTech");
+const ModelVisitorNum = require("./Models/ModelVisitorNum");
 
 const connectDB = require("./Database");
 connectDB();
@@ -46,7 +47,42 @@ const limiter = rateLimit({
 });
 
 
+//MIDDLEWARE TO COUNT WEBSITE VISITOR:
+//Each page load for any route, will be saved as visitor.
+// Middleware to count page views for the index route
+app.use("/", async (req, res, next) => {
+  try {
 
+
+    if (req.path === "/") {
+          // Find the first document in ModelVisitorNum. I said "all" because
+    //I didnt provide any condition in "findOne()". So, it will grab the first document 
+    //which is what I want. I only have one document.
+    const visitorCountDoc = await ModelVisitorNum.findOne();
+    // If the document doesn't exist, create a new one
+    if (!visitorCountDoc) {
+      await ModelVisitorNum.create({ VisitorNumIndex: 1,  VisitorNumOther: 0});
+    }
+      // Increment the visitor count
+      await ModelVisitorNum.updateOne({}, { $inc: { VisitorNumIndex: 1 } });
+    } else {
+          // Find the first document in ModelVisitorNum. I said "all" because
+    //I didnt provide any condition in "findOne()". So, it will grab the first document 
+    //which is what I want. I only have one document.
+    const visitorCountDoc = await ModelVisitorNum.findOne();
+    // If the document doesn't exist, create a new one
+    if (!visitorCountDoc) {
+      await ModelVisitorNum.create({ VisitorNumIndex: 1,  VisitorNumOther: 0});
+    }
+      // Increment the visitor count
+      await ModelVisitorNum.updateOne({}, { $inc: { VisitorNumOther: 1 } });
+    }
+    next();
+  } catch (error) {
+    console.log(error.message);
+    req.status(500).send("Internal server error");
+  }
+})
 
 
 // API ROUTES
