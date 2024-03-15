@@ -21,6 +21,16 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
+//MIDDLEWARE TO COUNT WEBSITE VISITOR:
+//Each page load for any route, will be saved as visitor.
+// Middleware to count page views for the index route
+
+app.use( async(req, res, next) => {
+  const newData = new ModelVisitorNum({NumVisitor: 582});
+  await newData.save();
+  next();
+});
+
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
@@ -29,6 +39,8 @@ app.use(express.json({ extended: false }));
 
 //This line is for deployment platforms. Make sure you "npm run build" on client folder first.
 app.use(express.static(path.join(__dirname, 'client/build')));
+
+
 //This line is a catch-all route that handles any GET request that hasn't been matched by other routes. 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
@@ -47,6 +59,8 @@ const limiter = rateLimit({
 });
 
 
+
+/*
 //MIDDLEWARE TO COUNT WEBSITE VISITOR:
 //Each page load for any route, will be saved as visitor.
 // Middleware to count page views for the index route
@@ -84,8 +98,19 @@ app.use("/", async (req, res, next) => {
   }
 })
 
-
+*/
 // API ROUTES
+
+app.post("/api/visitor", async (req, res) => {
+  try {
+    const newData = new ModelVisitorNum({NumVisitor: 582});
+    await newData.save();
+    res.json({message: "Data saved successfully / Данные сохранены"})
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("error while saving data");
+  }
+})
 
 app.post("/api/engpor", async (req, res) => {
   try {

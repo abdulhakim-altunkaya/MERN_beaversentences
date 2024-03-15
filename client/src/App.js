@@ -19,6 +19,8 @@ import ResultsPortur from "./components/ResultsPortur";
 import ResultsTurpor from "./components/ResultsTurpor";
 import ResultsTechET from "./components/ResultsTechET";
 import ResultsTechTE from "./components/ResultsTechTE";
+//index empty component is to overcome error: No routes matched location "/"
+import IndexEmptyComp from "./components/IndexEmptyComp";
 
 function App() {
     return (
@@ -45,7 +47,8 @@ function App() {
                     <Route path="/results/turpor/:param" element={ <ResultsTurpor /> } /> 
 
                     <Route path="/results/techet/:param" element={ <ResultsTechET /> } /> 
-                    <Route path="/results/techte/:param" element={ <ResultsTechTE /> } /> 
+                    <Route path="/results/techte/:param" element={ <ResultsTechTE /> } />
+                    <Route path="/" element={ <IndexEmptyComp /> } />
                 </Routes>
             </div>
         </Router>

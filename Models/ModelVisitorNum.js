@@ -1,10 +1,9 @@
+
 const mongoose = require("mongoose");
 const SchemaVisitor = new mongoose.Schema({
-    VisitorNumIndex: {
+    NumVisitor: {
         type: Number,
+        default: 0,
     },
-    VisitorNumOther: {
-        type: Number,
-    }
-})
+});
 module.exports = mongoose.model("ModelVisitorNum", SchemaVisitor);
