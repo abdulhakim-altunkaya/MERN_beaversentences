@@ -26,8 +26,13 @@ app.use(cors());
 // Middleware to count page views for the index route
 
 app.use( async(req, res, next) => {
+  //We will update the only document we have there by increasing it with one
+  await ModelVisitorNum.updateOne({}, { $inc: { NumVisitor: 1 } });
+  /*This part we used to create the first document. Now we dont need it. 
   const newData = new ModelVisitorNum({NumVisitor: 582});
   await newData.save();
+  */
+  //after middleware executes, we can move on with the actual user request
   next();
 });
 
