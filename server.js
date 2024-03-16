@@ -34,14 +34,18 @@ app.use( async(req, res, next) => {
   await newData.save();
   */
 
-  const userIp = req.ip;
-  const existingUser = await ModelVisitorIp.findOne({IpAddress: userIp});
-  if(!existingUser) {
-    const newUser = new ModelVisitorIp({VisitNumber: 1, IpAddress: userIp});
-    await newUser.save();
-  } else {
-    await ModelVisitorIp.updateOne({IpAddress: userIp}, { $inc: { VisitNumber: 1 } });
+  if(req.path === "/") {
+    const userIp = req.ip;
+    userIp.replace("::ffff:", "");
+    const existingUser = await ModelVisitorIp.findOne({IpAddress: userIp});
+    if(!existingUser) {
+      const newUser = new ModelVisitorIp({VisitNumber: 1, IpAddress: userIp});
+      await newUser.save();
+    } else {
+      await ModelVisitorIp.updateOne({IpAddress: userIp}, { $inc: { VisitNumber: 1 } });
+    }
   }
+  
   //after middleware executes, we can move on with the actual user request
   next();
 });
