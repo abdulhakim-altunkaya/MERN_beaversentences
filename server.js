@@ -47,7 +47,7 @@ app.use( async(req, res, next) => {
       const newUser = new ModelVisitorIp({VisitNumber: 1, IpAddress: userIp});
       await newUser.save();
     } else {
-      await ModelVisitorIp.updateOne({IpAddress: userIp}, { $inc: { VisitNumber: 1 } });
+      await ModelVisitorIp.updateOne({IpAddress: userIp}, { $inc: { VisitNumber: 1 }, $set: { TimeStamp: new Date() }, });
     }
   }
   
