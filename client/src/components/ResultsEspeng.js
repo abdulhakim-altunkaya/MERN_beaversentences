@@ -57,7 +57,7 @@ function ResultsEspeng() {
       console.log("Async generel error:", error)
     })
 
-  }, [param]);
+  }, [param, pairId]);
 
 
   return ( 

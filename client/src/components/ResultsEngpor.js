@@ -57,7 +57,7 @@ function ResultsEngpor() {
       console.log("Async generel error:", error)
     })
 
-  }, [param]);
+  }, [param, pairId]);
 
  
   return (

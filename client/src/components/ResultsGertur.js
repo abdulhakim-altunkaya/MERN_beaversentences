@@ -25,7 +25,7 @@ function ResultsGertur() {
       try {
         //there are security checks in Input component, just in case I am putting one more here
         if (param.length < 4) {
-          alert("Website: Your word is too short");
+          alert("Your word is too short");
           return;
         }
         //actually I dont need this pairId anymore because I am not using backend to assign language pairs.
@@ -58,7 +58,7 @@ function ResultsGertur() {
       console.log("Async generel error:", error)
     })
 
-  }, [param]);
+  }, [param, pairId]);
 
 
   return ( 

@@ -29,7 +29,7 @@ function Input() {
       alert("You need to select a language pair");
       return;
     } 
-    if(inputValue == "") {
+    if(inputValue === "") {
       alert("Please enter a word");
       return;
     } else if(inputValue.length < 3) {
@@ -42,33 +42,33 @@ function Input() {
 
     //routing to relevant language pair component based on the selected pair
     setSearchSymbol(true); 
-    if(pairId == 1) {
+    if(pairId === 1) {
       navigate(`/results/engtur/${inputValue}`);
-    } else if(pairId == 2) {
+    } else if(pairId === 2) {
       navigate(`/results/tureng/${inputValue}`);
-    } else if(pairId == 3) {
+    } else if(pairId === 3) {
       navigate(`/results/engpor/${inputValue}`);
-    } else if(pairId == 4) {
+    } else if(pairId === 4) {
       navigate(`/results/poreng/${inputValue}`);
-    } else if(pairId == 5) {
+    } else if(pairId === 5) {
       navigate(`/results/portur/${inputValue}`);
-    } else if(pairId == 6) {
+    } else if(pairId === 6) {
       navigate(`/results/turpor/${inputValue}`);
-    } else if(pairId == 7) {
+    } else if(pairId === 7) {
       navigate(`/results/engger/${inputValue}`);
-    } else if(pairId == 8) {
+    } else if(pairId === 8) {
       navigate(`/results/gereng/${inputValue}`);
-    } else if(pairId == 9) {
+    } else if(pairId === 9) {
       navigate(`/results/gertur/${inputValue}`);
-    } else if(pairId == 10) {
+    } else if(pairId === 10) {
       navigate(`/results/turger/${inputValue}`);
-    } else if(pairId == 11) {
+    } else if(pairId === 11) {
       navigate(`/results/engesp/${inputValue}`);
-    } else if(pairId == 12) {
+    } else if(pairId === 12) {
       navigate(`/results/espeng/${inputValue}`);
-    } else if(pairId == 13) {
+    } else if(pairId === 13) {
       navigate(`/results/techet/${inputValue}`);
-    } else if(pairId == 14) {
+    } else if(pairId === 14) {
       navigate(`/results/techte/${inputValue}`);
     }
     setSearchSymbol(false);

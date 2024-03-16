@@ -58,7 +58,7 @@ function ResultsTurpor() {
       console.log("Async generel error:", error)
     })
 
-  }, [param]);
+  }, [param, pairId]);
 
 
   return ( 
