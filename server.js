@@ -35,8 +35,8 @@ app.use( async(req, res, next) => {
   */
 
   if(req.path === "/") {
-    const userIp = req.ip;
-    userIp.replace("::ffff:", "");
+    const newUserIp = req.ip;
+    const userIp = newUserIp.replace("::ffff:", "");
     const existingUser = await ModelVisitorIp.findOne({IpAddress: userIp});
     if(!existingUser) {
       const newUser = new ModelVisitorIp({VisitNumber: 1, IpAddress: userIp});
