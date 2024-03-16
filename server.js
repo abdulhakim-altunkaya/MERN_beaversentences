@@ -34,9 +34,14 @@ app.use( async(req, res, next) => {
   await newData.save();
   */
 
+  //Here we are saving second data batch about visitors. They will be saved 
+  //to database with ip addresses and dates. Thats all. No other info. 
+  //As search can be done on the main index route, I can specify index route here, 
+  //so that this block does not execute with each req and res on all routes.
+  //And Ip6 addresses contain that "...fff" prefix, to remove it I am using regex and replace.
   if(req.path === "/") {
     const newUserIp = req.ip;
-    const userIp = newUserIp.replace("::ffff:", "");
+    const userIp = newUserIp.replace(/^::ffff:/, "");
     const existingUser = await ModelVisitorIp.findOne({IpAddress: userIp});
     if(!existingUser) {
       const newUser = new ModelVisitorIp({VisitNumber: 1, IpAddress: userIp});
