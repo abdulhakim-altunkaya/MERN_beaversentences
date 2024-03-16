@@ -10,6 +10,7 @@ const ModelEngesp = require("./Models/ModelEngesp");
 const ModelPortur = require("./Models/ModelPortur");
 const ModelEngturTech = require("./Models/ModelEngturTech");
 const ModelVisitorNum = require("./Models/ModelVisitorNum");
+const ModelVisitorIp = require("./Models/ModelVisitorIp");
 
 const connectDB = require("./Database");
 connectDB();
@@ -32,6 +33,15 @@ app.use( async(req, res, next) => {
   const newData = new ModelVisitorNum({NumVisitor: 582});
   await newData.save();
   */
+
+  const userIp = req.ip;
+  const existingUser = await ModelVisitorIp.findOne({IpAddress: userIp});
+  if(!existingUser) {
+    const newUser = new ModelVisitorIp({VisitNumber: 1, IpAddress: userIp});
+    await newUser.save();
+  } else {
+    await ModelVisitorIp.updateOne({IpAddress: userIp}, { $inc: { VisitNumber: 1 } });
+  }
   //after middleware executes, we can move on with the actual user request
   next();
 });
@@ -105,7 +115,7 @@ app.use("/", async (req, res, next) => {
 
 */
 // API ROUTES
-
+/*This api was for testing data saving to mongodb. I needed it to save visitor number to mongo.
 app.post("/api/visitor", async (req, res) => {
   try {
     const newData = new ModelVisitorNum({NumVisitor: 582});
@@ -116,7 +126,7 @@ app.post("/api/visitor", async (req, res) => {
     res.status(500).send("error while saving data");
   }
 })
-
+*/
 app.post("/api/engpor", async (req, res) => {
   try {
     const {SentenceEng, SentencePor} = req.body;
